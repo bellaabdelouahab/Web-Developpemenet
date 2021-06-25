@@ -1,0 +1,15 @@
+{% extends "Base.html" %}
+{% block base %}
+    
+    
+    <h1 class='play' > covide-19</h1>
+    {% for i in countries %}
+    <button class='btn' id='infos{{ countries.index(i) }}' onmouseover="hovering(this)" value={{ i }} >{{ i }}</button>
+    <div id='infos{{ countries.index(i) }}id' class='infos' style="background-color:red;">
+
+    </div>
+    <br>
+    {% endfor %}
+    <script src="{{url_for('static',filename='homepage.js')}}"></script>
+   
+{% endblock base %}

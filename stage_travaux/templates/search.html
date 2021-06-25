@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static' , filename='CSS/search.css')}}">
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+{% if data %}
+    {% for datas in data %}
+        <div>{{datas.id}}</div>
+    {% endfor %}
+{% else %}
+<form action="/Modefy" method='POST'>
+  <input type="search" name='search'>
+  <i class="fa fa-search"></i>
+</form>
+{% with messages = get_flashed_messages(category_filter=["inv1"]) %}
+{% if messages %}
+    {% for msg in messages %}
+        <p class='error' class='disappear'>{{ msg }}</p>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+{% endif %}
+{% endblock content %}

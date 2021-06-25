@@ -1,0 +1,46 @@
+*{
+    margin:0;
+    padding: 0;
+}
+header{
+    background-color: black;
+}
+main{
+    position: flex;
+}
+h3{
+    padding-left: 30vw;
+    padding-top: 1.5vw;
+    color: white;
+    padding-bottom: 1.6vw;
+
+}
+p{
+    padding:-1vw;
+    color:rgba(166, 227, 46, 0.489) ;
+    margin:-1vw;
+}
+#tabcontry{
+    position: fixed;
+    display:inline-block;
+    width:25vw;
+    height:40vw;
+    border: 1vw solid black;
+    margin: 1vw 0vw 0vw 1vw;
+    overflow: auto;
+    white-space: nowrap;
+}
+#diagrame{
+    position:fixed;
+    width:65vw;
+    height:40vw;
+    left: 29vw;
+    border: 1vw solid black;
+    margin: 1vw 0vw 0vw 3vw;
+}
+div > button {
+    display: inline-block;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+  }

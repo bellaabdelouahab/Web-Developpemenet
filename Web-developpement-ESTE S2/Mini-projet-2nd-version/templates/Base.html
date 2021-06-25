@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='homepage.css')}}">
+    <link rel="stylesheet" href="../static/homepage.css">
+    <title>Home</title>
+</head> 
+<body>
+    <header id='play'>
+        <nav>
+            <a href="#" style="display:inline-block; width:15% ; height:100%">
+                <img src="../static/wish.png" alt="Wish logo" width='100%' height='100%'>
+            </a>
+            <div id='vlo'>WIsh Store</div>
+            <form method="get" action="/" id='homey'>
+                <button type="submit" id='homey'><span>Home</span> </button>
+            </form>
+            <form method="get" action="/" id='homey '>
+                <button class='artic' type="submit" id='homey'><span id="arti" class='finaly'>Articles</span> </button>
+                <li id='player'>
+                    <ul>hello</ul>
+                    <ul>hey</ul>
+                    <ul>how are you</ul>
+                </li>
+            </form>
+            
+            <form method="get" action="/" id='homey'>
+                <button type="submit" id='homey'><span>About</span> </button>
+            </form>
+            
+        </nav>
+    </header>
+    <main>
+        {% block base %}
+        {% endblock %}
+    </main>
+    
+</body>
+<script src="../static/homepage.js"></script>
+</html>

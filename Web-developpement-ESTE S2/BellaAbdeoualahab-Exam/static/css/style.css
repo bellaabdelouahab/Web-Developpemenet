@@ -1,0 +1,59 @@
+*{
+    margin:0;
+    padding:0;
+}
+header{
+    width:100%;
+    
+    background-color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+footer{
+    width:100%;
+    background-color:bisque;
+    font-family:italic;
+    position:fixed;
+    bottom: 0;
+    padding:0% 30%
+}
+header > a {
+    text-decoration: none;
+    color: antiquewhite;
+    padding: 0vw 3vw
+}
+#homey{
+    border:1px solid black;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display:inline-block;
+    padding:0 2vw;
+}
+#play{
+    width:25%;
+    height:40vw;
+    background-color:whitesmoke;
+    border: 1px solid black;
+    margin:auto;
+    border-radius:196*-5px
+}
+#play1{
+    width:85%;
+    height:25vw;
+    background-color:whitesmoke;
+    border: 1px solid black;
+    margin:auto;
+    border-radius:5px
+}
+button{
+    margin: 0 1vw;
+}
+p{
+    text-align: center;
+}
+form{
+    display: inline-block;
+}
+#plays{
+    text-align: center;
+}

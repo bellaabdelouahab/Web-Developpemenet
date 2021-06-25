@@ -1,0 +1,44 @@
+#titlest {
+    color: aquamarine;
+    font-size: 5vw;
+}
+
+body {
+    background-image: url(../images/e6142eacd3e73a4075e959a611e94819.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.t4 {
+    height: 15vw;
+    width: 25vw;
+    border-radius: 3vw;
+    margin-right: 5vw;
+    margin-top: 7vw;
+    margin-bottom: 7vw;
+}
+
+p>a {
+    float: right;
+    margin-right: 50px;
+}
+
+#play {
+    display: inline-block;
+}
+
+.gene {
+    height: 12vw;
+    background-color: #e1e1e1e1;
+    display: inline-block;
+    width: 50vw;
+}
+
+.t3 {
+    padding-top: 1.5vw;
+    padding-left: 2vw;
+    margin-left: 30vw;
+    text-decoration: none;
+    color: darkgray;
+    display: block;
+}

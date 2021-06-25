@@ -1,0 +1,81 @@
+body{ 
+	background-color: lightgrey; 
+}
+#heart{
+	border-style: solid;border-color: green;text-align: justify;width: 750px;
+}
+.brd{
+	padding:15px 30px;margin-left:40px;border:2px solid #e1e1e1;
+	border-radius: 200px;width: 300px;font-size: 20px;margin-left: 5px;
+	background-color: #00000000;font-family: Pacifico;
+}
+nav { 
+	height: 400px;width: 1339px;
+	background: #eee url(../images/bg-banner.jpg) no-repeat center;
+	 background-size: cover;position: relative;
+}
+nav ul{
+	list-style: none;margin: 0;	padding: 0;
+}
+nav > ul >li{
+	float: left;padding: 12px;
+}
+nav > ul >li>ul>li{
+	padding-top: 10px;
+}
+nav ul li::after{
+	content: "";display: block;clear: both;
+	font-family:
+}
+nav ul li a button:hover{
+	background-color: #e1e1e1;
+}
+nav ul ul {
+	display: none ;
+}
+nav ul li:hover>ul{
+	display: block;
+}
+.bgpy{
+	height: 400px;background: #eee url(q141s3xfs.png) no-repeat center;
+	background-size: cover;position: relative;
+
+}
+#tsew{
+	padding-top: 550px;font-style: italic;
+}
+.fst{
+	display: inline-block;
+}
+.fts{
+	display: inline;margin-left: 530px;
+}
+.fts:hover{
+	background-color: #e1e1e1;
+}
+.formi{
+	border: 1;background-color: red;
+}
+.diver{
+	 margin: 40px 500px;height: 500px;
+	background-color: #e1e1e1;
+}
+.heber{
+	padding: 10px 50px;margin-left: 10px;
+}
+#former{
+	padding: 8px 30px;
+}
+#country{
+	padding:7px 106px;margin-left: 10px; 
+}
+#dates{
+	padding:4px 65px;margin-left: 10px;
+}
+#submite{
+	padding:4px 113px;margin-left: 10px;background-color: #4DCD1C;
+}
+.clcaps/*styling input*/{
+
+	border: none;border-radius: 7px;background-color: #f1f1f1;
+}

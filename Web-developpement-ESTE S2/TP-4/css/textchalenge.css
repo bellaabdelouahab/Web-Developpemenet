@@ -1,0 +1,81 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    margin: -1vw -1vw 0vw -1vw;
+}
+
+#playX {
+    display: flex;
+    width: 100vw;
+}
+
+#play {
+    background-color: rgb(13, 13, 60);
+    height: 10%;
+    margin: -1vw -1vw 0vw -1vw;
+    text-align: center;
+    padding: 3vw;
+    color: aliceblue;
+    font-size: 4vw;
+}
+
+#play1 {
+    display: inline-block;
+    background-color: rgb(37, 205, 76);
+    margin: -1vw -1vw 0vw -1vw;
+    height: 42vw;
+    width: 27vw;
+    padding: 0vw 5vw;
+    font-size: 1.5vw;
+}
+
+#play2 {
+    display: inline-block;
+    background-color: white;
+    margin: -1vw -1vw 0vw -1vw;
+    height: 42vw;
+    width: 50vw;
+}
+
+#play3 {
+    display: block;
+    background-color: aqua;
+    margin: -1vw -1vw 0vw -1vw;
+    height: 42vw;
+    width: 30vw;
+}
+
+#textdis {
+    height: 10vw;
+    padding: 1vw;
+    width: 75%;
+    border: 2px solid  black;
+    border-width: 3px;
+    background-color: rgb(144, 110, 110);
+    margin: 4vw 5vw;
+    font-size: 1vw
+}
+
+#textinput {
+    height: 10vw;
+    width: 70%;
+    margin: 4vw 5vw;
+    font-size: 1vw;
+    border-color: blue;
+    border-width: 1vw;
+}
+
+#counter,
+#redo {
+    width: 15vw;
+    height: 2vw;
+    margin: 10vw 10vw 0vw 7vw;
+    background-color: rgb(223, 149, 20);
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+#redo:hover {
+    background-color: #eeeeee
+}

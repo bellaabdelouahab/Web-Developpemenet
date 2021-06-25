@@ -1,0 +1,23 @@
+*{
+    margin:0;
+    padding:0;
+}
+header{
+    width:100%;
+    
+    background-color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+footer{
+    width:100%;
+    background-color:bisque;
+    font-family:italic;
+    position:fixed;
+    bottom: 0;
+    padding:0% 30%
+}
+header > a {
+    text-decoration: none;
+    color: antiquewhite;
+    padding: 0vw 3vw
+}

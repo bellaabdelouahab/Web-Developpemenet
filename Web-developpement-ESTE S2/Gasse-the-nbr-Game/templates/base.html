@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+        
+    </head>
+    <body>
+    
+    <header>
+
+    </header>
+    <main>
+        {% block base %}
+        {% endblock %}
+    </main>
+    <footer>
+
+    </footer>
+    </body>
+    <script src="{{url_for('static',filename='game.js')}}"></script>
+    </html>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block base %}
+    <form action="/game" method="post">
+    <label for="fname">Full Name</label><br>
+    <input type="text" name='fname' placeholder='Your Full Name...'><br>
+    <label for="email">Email</label><br>
+    <input type="text name'email" placeholder='Your Email'><br>
+    <button type="submit">submit</button>
+    </form>
+{% endblock %}

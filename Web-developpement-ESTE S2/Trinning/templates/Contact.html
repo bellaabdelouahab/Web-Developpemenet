@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block base %}
+
+<h1>hello</h1>
+    <form action="/Contact" method="POST">
+    <label for="fname">First Name</label>
+    <input type="text"  name='fname' placeholder='Your First Name...'>
+    <label for="lname">Last Name</label>
+    <input type="text" name='lname' placeholder='Your Last Name...'>    
+    <button type="submit">submit</button>
+    <h1>data</h1>
+    {% for datas in data %}
+        <hr>
+        <h3>{{ datas.lname }}</h3>
+        <h6>{{ datas.fname }}</h6>
+    {% endfor %}
+</form>
+{% endblock %}

@@ -1,0 +1,298 @@
+.ino {
+    display: block;
+    max-height: 100px;
+    padding-top: 0.01vw;
+    background-color: yellow;
+    width: 100%;
+    background-color: whitesmoke;
+    overflow: auto;
+    padding-bottom: 1vw;
+}
+
+header a {
+    float: right;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: Pacifico;
+}
+
+.brd {
+    border: 10px;
+    background-color: red;
+    padding-right: 40px;
+    padding-left: 40px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+header>h1 {
+    display: inline;
+}
+
+header>h4 {
+    display: inline;
+    float: right;
+    padding-top: 10px;
+    padding-right: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header>a:hover {
+    background-color: #e1e1e1;
+    color: black;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.babet {
+    display: inline-block;
+    color: white;
+    background-color: red;
+    margin-left: 0vw;
+    margin-right: 0vw;
+    padding: 1vw 12.33vw;
+    text-align: center;
+    width: 15vw;
+}
+
+.babet1 {
+    position: fixed
+}
+
+nav>ul>li {
+    float: left;
+    text-decoration: none;
+}
+
+nav ul ul {
+    display: none;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li a:hover {
+    background-color: #cae4e4;
+    text-decoration: none;
+}
+
+#_1 {
+    color: #a0D54DFF;
+}
+
+#_2 {
+    color: #aaD54DFF;
+}
+
+#_3 {
+    color: #1eD54DFF;
+}
+
+#_4 {
+    color: #e1D54DFF;
+}
+
+#_5 {
+    color: #F2aa4DFF;
+}
+
+.android {
+    width: 15vw;
+    height: 15vw;
+    float: right;
+    transition: transform 4s;
+}
+
+#cheascont:active {
+    transform: rotate(360deg)
+}
+
+#headcont {
+    display: flex;
+    width: 15vw;
+    height: 5vw;
+}
+
+#head {
+    margin-left: 4.5vw;
+    margin-top: 2.2vw;
+    display: flex;
+    width: 6vw;
+    height: 2.7vw;
+    background-color: green;
+    border-top-left-radius: 10vw;
+    border-top-right-radius: 10vw;
+    transition: transform 1s;
+}
+
+#eye1 {
+    width: 0.7vw;
+    height: 0.7vw;
+    background-color: white;
+    border-radius: 10vw;
+    margin-left: 1.7vw;
+    margin-top: 0.7vw
+}
+
+#eye2 {
+    width: 0.7vw;
+    height: 0.7vw;
+    background-color: white;
+    border-radius: 10vw;
+    margin-left: 1.2vw;
+    margin-top: 0.7vw
+}
+
+#head:hover {
+    transform: scale(2, 2) translateY(-0.5vw);
+}
+
+#bodycont {
+    display: flex;
+    width: 15vw;
+    height: 5vw;
+}
+
+#handcont {
+    width: 4.5vw;
+    height: 5vw;
+    display: flex;
+}
+
+#chapbd {
+    height: 5vw;
+    width: 6vw;
+    background-color: green;
+    border-bottom-left-radius: 0.5vw;
+    border-bottom-right-radius: 0.5vw;
+}
+
+.hand1 {
+    width: 1.3vw;
+    height: 4.2vw;
+    float: right;
+    margin-top: 0.7vw;
+    margin-right: 0.3vw;
+    margin-left: 2.7vw;
+    background-color: green;
+    border-radius: 10vw;
+    transition: transform 2s
+}
+
+.hand2 {
+    width: 1.3vw;
+    height: 4.2vw;
+    float: left;
+    margin-top: 0.7vw;
+    margin-left: 0.5vw;
+    margin-right: 2.7vw;
+    background-color: green;
+    border-radius: 10vw;
+    transition: transform 2s
+}
+
+.hand1:hover {
+    transform-origin: top center;
+    transform: rotate(50deg)
+}
+
+.hand1 {
+    transform-origin: top center;
+    transform: rotate(0deg)
+}
+
+.hand2:hover {
+    transform-origin: top center;
+    transform: rotate(-50deg)
+}
+
+.hand2 {
+    transform-origin: top center;
+    transform: rotate(0deg)
+}
+
+#cheascont {
+    width: 6vw;
+    height: 5vw;
+}
+
+#feetcont {
+    display: flex;
+    width: 15vw;
+    height: 5vw;
+}
+
+#feetcont1 {
+    width: 7.5vw;
+    height: 5vw;
+}
+
+#feetcont2 {
+    width: 7.5vw;
+    height: 5vw;
+}
+
+.feet1 {
+    width: 1.3vw;
+    height: 4.2vw;
+    float: right;
+    margin-top: -1.6vw;
+    margin-right: 0.5vw;
+    background-color: green;
+    border-radius: 10vw;
+    transition: transform 2s
+}
+
+.feet2 {
+    width: 1.3vw;
+    height: 4.2vw;
+    float: left;
+    transition: transform 2s;
+    margin-top: -1.6vw;
+    margin-left: 0.5vw;
+    background-color: green;
+    border-radius: 10vw;
+    transition: transform 2s
+}
+
+.feet1:hover {
+    transform-origin: top center;
+    transform: rotate(50deg);
+}
+
+.feet1 {
+    transform-origin: top center;
+    transform: rotate(0deg);
+}
+
+.feet2:hover {
+    transform-origin: top center;
+    transform: rotate(-50deg);
+}
+
+.feet2 {
+    transform-origin: top center;
+    transform: rotate(0deg);
+}
+
+#play {
+    display: inline-block;
+    width: 5vw;
+    height: 5vw;
+    background-color: blue;
+    margin-right: 3vw;
+    margin-bottom: 3vw;
+    text-align: center;
+    color: white;
+    padding-top: 2vw;
+    text-size: 1vw
+}

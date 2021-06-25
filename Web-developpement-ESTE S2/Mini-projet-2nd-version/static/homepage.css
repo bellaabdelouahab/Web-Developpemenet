@@ -1,0 +1,115 @@
+*{
+    margin:0;
+    padding: 0;
+}
+#play{
+    background-color: black;
+}
+.play{
+    color:blue;
+    background-color: crimson;
+    font-size: 5vw;
+}
+.btn{
+    width:25.2vw;
+    overflow: auto;
+}
+.infos{
+    width:22vw;
+    height: 15vw;
+    color:white;
+    padding-left: 2vw;
+    background-color: rgb(30, 40, 27);
+    border-radius: 30px;
+    margin-left: 15vw;
+    position:absolute;
+    top: 50px;
+}
+nav{
+    width:100%;
+    height: 5vw;
+    display:flex;
+    background-color:black;
+}
+#vlo{
+    display:inline-block;
+    font-family:cursive;
+    color:white;
+    font-size:3vw;
+    justify-content: center;
+    padding-top: 2.4vw;
+    margin-right: 3vw;
+}
+#homey{
+    text-decoration: none;
+    height: 100%;
+    width: 15vw;
+    background-color:white;
+    font-family:cursive;
+    font-size:3vw;
+    vertical-align:middle;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+#homey:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+#homey span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#homey span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+#homey .artic:after {
+    content: ' \2693';
+    font-size:2.7vw;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -15px;
+    transition: 0.5s;
+}
+#homey:hover .artic {
+    padding-right: 25px;
+  }
+  
+#homey:hover .artic:after {
+opacity: 1;
+right: 0;
+}
+#homey:hover .artic {
+    padding-right: 45px;
+}
+#homey:hover #player{
+    opacity: 1;
+}
+#homey:hover span {
+  padding-right: 25px;
+}
+
+#homey:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+li{
+    color:red;
+    position:fixed;
+    margin-left: 39.2%;
+    margin-top: 5vw;
+    width:15vw
+}
+li{
+    color:blue;
+    border:0.4vw solid blue;
+    display: none;
+}

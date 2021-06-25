@@ -1,0 +1,12 @@
+{% extends "base.html"%}
+{% block base %}
+<div id='plays'>
+    <form action="/game" method="POST" id ='homey'>
+    <label for="fname">Full Name</label><br>
+    <input type="text" name='fname' placeholder='Your Full Name...'><br>
+    <label for="email">Email</label><br>
+    <input type="text name" name="email" placeholder='Your Email'><br>
+    <button type="submit" >submit</button>
+    </form>
+</div>
+{% endblock base %}

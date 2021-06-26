@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% block base %}
+    <div id='player1'>
+        <h2>first:{{ player1 }}</h2>
+        <img id='img1' src="../static/images/dice-0.png">
+    </div>
+    <div id='player2'>
+        <h2>first:{{ player2 }}</h2>
+        <img id='img1' src="../static/images/dice-0.png">
+    </div>
+    <div id='all'>
+        <button type="submit" onclick=''>New game</button>
+        <button type="submit" onclick=''>Roll</button>
+        <button type="submit" onclick='location="/" '>Out</button>
+    </div>
+{% endblock base %}

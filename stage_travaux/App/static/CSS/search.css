@@ -1,0 +1,186 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background: #07051a;
+}
+.window {
+    max-width: 90%;
+    border-radius: 20px;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 40px;
+    color: #1d8fdc;
+    padding-top: 29px;
+    margin-top: 10%;
+    background-color: #5580ae84;
+    position: relative;
+}
+input[type=text]{
+    width:50%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    outline: none;
+    border: none;
+    color: rgb(19, 17, 17);
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: bold;
+    background-color: #00336631;
+}
+#mod1 input[type=text]{
+    width:150%;
+    background-color:#003366
+}
+#formi input{
+    display: inline-block;
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#customers  tr  td {
+  background-color: #f2f2f2;
+}
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+#mod1{
+  position :fixed;
+  top: 50%;
+  left: 33%;
+}
+#neww,#modi{
+    display:none;
+}
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: DodgerBlue;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#display-error{
+  float: right;
+  width: 400px;
+  border: 1px solid #D8D8D8;
+  padding: 5px;
+  border-radius: 5px;
+  font-family: Arial;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: rgb(255, 249, 242);
+  color: rgb(211, 0, 0);
+  text-align: center;
+  text-align: center;
+  visibility:visible;
+  animation:move 10s;
+  -webkit-animation:move 5s infinite;
+  -webkit-animation-iteration-count:1;
+  -webkit-animation-fill-mode:forwards;
+}
+
+img
+  {
+  float: left;
+  }
+  #display-success
+  {
+  float:right;
+  display:flex;
+  width: 400px;
+  border: 1px solid #D8D8D8;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: Arial;
+  font-size: 11px;
+  text-transform: uppercase;
+  background-color: rgb(236, 255, 216);
+  color: green;
+  text-align: center;
+  animation:move 10s;
+  -webkit-animation:move 5s infinite;
+  -webkit-animation-iteration-count:1;
+  -webkit-animation-fill-mode:forwards;
+  }
+  
+  #display-success img
+  {
+  position: relative;
+  bottom: 5px;
+  }
+  @-webkit-keyframes move /* Safari and Chrome */
+
+  {
+  0%   {opacity:1;}
+  15%   {opacity:0.7;}  
+  50%  {opacity:0.7;}
+  75%  {opacity:0.3;}
+  100% {opacity:0;}
+  }

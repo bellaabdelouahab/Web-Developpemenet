@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static' , filename='CSS/multiform.css')}}">
+<link rel="stylesheet" href="{{url_for('static' , filename='CSS/style.css')}}">
+<main >
+<div class='window'>
+    <form action="/create" id="regForm" method="POST" id ='homey'>
+        <h3>Create an order</h3>
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab">Package informations :
+            <input type='text' style='width:85vw' placeholder="Package weight in Kg..." oninput="calc_weight(this)" name="weight">
+            <input type="radio" id='rad1' onclick='radio1()' name="type" value="eco" checked>
+            <label for="rad1">Eco</label>
+            <input type="radio" id='rad2' onclick='radio1()' name="type" value="express">
+            <label for="rad2">Express</label><br><br>
+            <input type="checkbox" id='checkbox1' onclick='calc_type()' name="sms" value='True' >
+            <label for="sms">SMS</label><br><br>
+            <input type="checkbox" id='checkbox2' onclick='calc_type1()' name="recept" >
+            <label for="recept">acusse de reception</label><br><br>
+            <input type="radio" id='rad3'name='no' onclick='cheque()'  checked>
+            <label for="rad3">Espece</label> 
+            <input type="radio" id='rad4' onclick='cheque()'  name='no'>
+            <label for="rad4">Cheque</label><br>
+            <div id='ttc' style='margin:auto;color:black;'>
+                Prix(H.T): <span id='pricenor'> <span id='price'>0</span> DH </span><br><hr>
+                Tax (TVA): <span id='pricetva'>0 DH </span><br><hr>
+                TTC: <span id='pricettc'>0 DH </span>
+            </div>
+        </div> 
+        <div class="tab">Sender informations :
+            <input type='text' id='_s_f' placeholder="Full name..." oninput="this.className = ''" name="sender_full_name">
+            <input type='text' id='_s_c' placeholder="CIN..." oninput="this.className = ''" name="sender_cin">
+            <input type='text'  id='_s_a' placeholder="Adress..." oninput="this.className = ''" name="sender_adress">
+            <div style='display:flex;'>
+                <div id='_212'>
+                    +212
+                </div>
+                <input type='text' style='width:100%;margin-left: -0.8vw; border-top-left-radius:0px;border-bottom-left-radius:0px ;'  id='_s_p' placeholder="Phone number..." oninput="this.className = ''" name="sender_phonenumber">
+            </div>
+        </div>
+        <div class="tab">Resever informations :
+            <input type='text' id='_r_f' placeholder="Full name..." oninput="this.className = ''" name="resever_full_name">
+            <input type='text' id='_r_c' placeholder="CIN..." oninput="this.className = ''" name="resever_cin">
+            <input type='text' id='_r_a' placeholder="Adress..." oninput="this.className = ''" name="resever_adress">
+            <div style='display:flex;'>
+                <div id='_212'>
+                    +212
+                </div>
+                <input type='text' style='width:84%;margin-left: -0.8vw; border-top-right-radius:0px;border-bottom-right-radius:0px ;'  id='_r_p' placeholder="Phone number..." class='_2122' oninput="this.className = ''" name="resever_phonenumber">
+            </div>
+        </div>
+        <div class="tab" id='tab'>
+            <input type='text' placeholder="Bank..." oninput="this.className = ''" name="bank">
+            <input type='text' placeholder="Check Number..." oninput="this.className = ''" name="checknumber">
+        </div>
+        <div class="tab">More Info:
+            <table id="customers">
+                <tr>
+                    <th colspan="4">Sender</th>
+                    <th colspan="4">Resever</th>
+                </tr>
+                <tr>
+                    <th> Cin</th>
+                    <th>full name</th>
+                    <th>Adress</th>
+                    <th>Phone</th>
+                    <th> Cin</th>
+                    <th>full name</th>
+                    <th>Adress</th>
+                    <th>Phone</th>
+                </tr>
+                <tr>
+                    <td id='s_c'></td>
+                    <td id='s_f'></td>
+                    <td id='s_a'></td>
+                    <td id='s_p'></td>
+                    <td id='r_c'></td>
+                    <td id='r_f'></td>
+                    <td id='r_a'></td>
+                    <td id='r_p'></td>
+                </tr>
+                <tr>
+                    <th>Date</th>
+                    <th>ID</th>
+                    <th>Price</th>
+                    <th>Tax</th>
+                    <th>TTC</th>
+                </tr>
+                <tr>
+                    <td id='daterec' ></td>
+                    <td id='id'></td>
+                    <td id='price1'></td>
+                    <td id='Tax'></td>
+                    <td id='Ttc' ></td>
+                </tr>
+            </table>
+        </div>
+        <div style="float:right;">
+            <button type="button" id="prevBtn" class="logo" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" class="logo" onclick="nextPrev(1)">Next</button>
+            <input type="submit" id="submitBtn" value='submit'>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:0px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+  </form>
+</div>
+</main>
+<script>
+    var user = JSON.parse('{{ user | tojson | safe}}');
+</script>
+<script src="{{ url_for('static',filename='JS/multiform.js') }}"></script>
+{% endblock content %}

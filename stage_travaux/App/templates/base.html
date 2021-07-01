@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{url_for('static' , filename='CSS/header.css')}}">
+    <title>Poste Maroc</title>  
+</head>
+<body> 
+    <header style='display: flex; width:100%;height:10%'>
+        <div>
+            <img src="../static/IMAGES/poste_maroc.webp" id='image' width='100%' height="100%" alt="Barid-Poste">
+        </div>
+        {% if current_user.is_authenticated %}
+        <span id='logout'><button id='logout1' onclick='location="/logout"'>Logout</button></span>
+        {% else %}
+        <span id='logout'><h1>About</h1></span>
+        {% endif %}
+    </header>   
+        {% block content %}
+        {% endblock content %}  
+</body>
+</html>

@@ -1,19 +1,9 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #f1f1f1;
-  }
-  
 
-  
-  h1 {
+  h3{
     text-align: center;  
   }
   
   input[type=text] {
-    padding: 10px;
     width: 100%;
     font-size: 17px;
     font-family: Raleway;
@@ -29,21 +19,6 @@
   /* Hide all steps by default: */
   .tab {
     display: none;
-  }
-  
-  button {
-    background-color: #04AA6D;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
-    cursor: pointer;
-    
-  }
-  
-  button:hover {
-    opacity: 0.8;
   }
   input[type=submit] {
     background-color: #04AA6D;
@@ -73,6 +48,20 @@
     display: inline-block;
     opacity: 0.5;
   }
+  .logo {
+    background-color: #04AA6D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+    
+  }
+  
+  .logo:hover {
+    opacity: 0.8;
+  }
   
   .step.active {
     opacity: 1;
@@ -85,3 +74,47 @@
   #age1,#age2{
       display: inline;
   }
+  #ttc{
+    width:25vw;
+    border-radius: 5px;
+    background-color: #60adde;
+
+  }
+  #pricenor,#pricetva,#pricettc{
+    float:right
+  }
+
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  #customers  tr  td {
+      background-color: #f2f2f2;
+  }
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+  #_212{
+    padding:10px;
+    height:2vw ;
+    color: rgb(19, 17, 17);
+    border-radius: 5px;
+    border-top-right-radius:0px;
+    border-bottom-right-radius:0px ;
+    margin: 10px;
+    font-weight: bold;
+    background-color: #00336631;
+    display: inline-block;
+}

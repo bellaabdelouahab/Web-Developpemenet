@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static' , filename='CSS/search.css')}}">
+{% if data %}
+    <table id="customers">
+        <tr>
+            <th>employ</th>
+            <th>package ID</th>
+            <th>sender name</th>
+            <th>sender cin</th>
+            <th>sender address</th>
+            <th>sender phone number</th>
+            <th>resever name</th>
+            <th>resever cin</th>
+            <th>resever address</th>
+            <th>resever phone number</th>
+            <th>Date</th>
+        </tr>
+    {% for datas in data %}
+        <tr>
+            <td>{{datas.worker_id}}</td>
+            <td>{{datas.id}}</td>
+            <td>{{datas.sender_full_name}}</td>
+            <td>{{datas.sender_cin}}</td>
+            <td>{{datas.sender_adress}}</td>
+            <td>{{datas.sender_phonenumber}}</td>
+            <td>{{datas.resever_full_name}}</td>
+            <td>{{datas.resever_cin}}</td>
+            <td>{{datas.resever_adress}}</td>
+            <td>{{datas.resever_phonenumber}}</td>
+            <td id='current_date' class={{datas.id}} onclick='Modefy(this)'>{{datas.package_date}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+     <form action="#" id='mod1'>
+        <input type="text" id="modi" name="modi" value="">
+    </form>
+{% else %}
+<!-- form action="/Modefy" method='POST'>
+  <input type="search" name='search'>
+  <i class="fa fa-search"></i>
+</form-->
+{% with messages = get_flashed_messages(category_filter=["inv1"]) %}
+{% if messages %}
+    {% for msg in messages %}
+        <div id="display-error"><img src="../static/IMAGES/error.png" width='25vw' height='15vw'alt="Error" />{{ msg }}</p></div><br> 
+    {% endfor %}
+{% endif %}
+{% endwith %}
+<div class=window>
+<form action='/Modefy' method='POST' id='formi'>
+    <input type="text" name='search' placeholder='search'>
+    <label for="infosearch">Search By </label>
+        <select class="custom-select" name='infosearch' data-style="btn-primary">
+            <option value='sender_full_name'>Sender Name</option>
+            <option value='sender_cin'>Sender Cin</option>
+            <option value='sender_adress'>Sender Address</option>
+            <option value='sender_phonenumber'>Sender Phone</option>
+            <option value='resever_full_name'>Resever Name</option>
+            <option value='resever_cin'>Resever Cin</option>
+            <option value='resever_adress'>Resever Address</option>
+            <option value='resever_phonenumber'>Resever Phone</option>
+            <option value='worker_id'>Employ ID</option>
+            <option value='id'>Package ID</option>
+            <option value='package_date'>Date</option>
+        </select>
+    {% endif %}
+  </form>
+</div>
+<script src="{{ url_for('static',filename='JS/validmodef.js') }}"></script>
+{% endblock content %}

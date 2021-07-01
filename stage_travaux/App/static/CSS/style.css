@@ -1,0 +1,55 @@
+
+h2 {
+    text-align: center;
+}
+
+input[type=text],
+input[type=password] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 5px;
+    outline: none;
+    border: none;
+    color: rgb(19, 17, 17);
+    border-radius: 5px;
+    margin: 10px;
+    font-weight: bold;
+    background-color: #00336631;
+    display: inline-block;
+}
+form{
+    width: 100%;
+}
+input[type=submit] {
+    background-color: #04AA6D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background: #60adde;
+    opacity: 0.7;
+    color: #fff;
+}
+
+input[type=submit]:hover :after {
+    width: 100%;
+}
+
+input[type=checkbox] {
+    margin-left: 0.8vw;
+}
+
+
+#btnc{
+    display: block;
+    background-color: rgb(106, 187, 187);
+    width: 100%;
+    border:1px solid rgb(106, 187, 187);
+    border-radius: 10px ;
+    height:40px;
+}

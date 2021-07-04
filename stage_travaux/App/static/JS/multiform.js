@@ -25,6 +25,7 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").style.display = "none";
     document.getElementById("submitBtn").style.display = "inline";
+    document.getElementById("submitBtn").disabled=false
     let a= new Date
     $("#s_c").innerHTML=$("#_s_c").value
     $("#s_f").innerHTML=$("#_s_f").value
@@ -107,11 +108,18 @@ let oldvaluesms=0
 let oldvaluerecept=0
 let oldvaluetype=1.22
 function calc_weight(e){
-  let weight=parseFloat(e.value)
+  let weight=e.value
+  e.className=''
+  var regex=/^[0-9]+$/;
+  if (isNaN(weight))
+  {
+    e.className+='invalid'
+    weight=0
+  }
   let current_weight=parseFloat(document.getElementById("price").innerHTML)
   current_weight-=oldvalue
 
-  if(0<=weight&&weight<5 ){
+  if(0<weight&&weight<5 ){
     newvalue=user.p1
   }
   else if(5<=weight&&weight<10){

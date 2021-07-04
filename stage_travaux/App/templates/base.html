@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="{{url_for('static' , filename='CSS/header.css')}}">
+    <script src="{{ url_for('static',filename='JS/jquery-3.6.0.js') }}"></script>
     <title>Poste Maroc</title>  
 </head>
 <body> 
@@ -18,4 +19,5 @@
         {% block content %}
         {% endblock content %}  
 </body>
+
 </html>

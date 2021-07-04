@@ -26,7 +26,6 @@ def index():
             if bcrypt.check_password_hash(data.password,request.form.get('password')):
                 flash('You have been logged-in secssefuly','success')
                 login_user(data)
-                session['id']=data.id
                 session['data']={'p1':data.price1,'p2':data.price2,\
                 'p3':data.price3,'p4':data.price4,'p5':data.price5,'p6':data.price6}
                 return redirect(url_for('acc'))
@@ -44,7 +43,7 @@ def create():
     id=len(Package.query.all())
     if request.method=='POST':
         post=Package(
-                    id='LD'+str(id).zfill(8)+'MA',\
+                    id=session['old_id'] if session['old_id'] else 'LD'+str(id).zfill(8)+'MA',\
                     sender_full_name=request.form.get('sender_full_name'),\
                     resever_full_name=request.form.get('resever_full_name'),\
                     sender_cin=request.form.get('sender_cin'),\
@@ -65,42 +64,62 @@ def create():
         flash("Order has been created secssefuly",'success')
         return redirect(url_for('acc'))
     return render_template("create.html", user=session['data'])
+def searchbase(a,b):
+    if a=='id':
+        return Package.query.filter_by(id=b).all()
+    elif a=='worker_id':
+        return Package.query.filter_by(worker_id=b).all()
+    elif a=='sender_full_name':
+        return Package.query.filter_by(sender_full_name=b).all()
+    elif a=='sender_adress':
+        return Package.query.filter_by(sender_adress=b).all()
+    elif a=='sender_cin':
+        return Package.query.filter_by(sender_cin=b).all()
+    elif a=='sender_phonenumber':
+        return Package.query.filter_by(sender_phonenumber=b).all()
+    elif a=='resever_full_name':
+        return Package.query.filter_by(resever_full_name=b).all()
+    elif a=='resever_adress':
+        return Package.query.filter_by(resever_adress=b).all()
+    elif a=='resever_cin':
+        return Package.query.filter_by(resever_cin=b).all()
+    elif a=='resever_phonenumber':
+        return Package.query.filter_by(resever_phonenumber=b).all()
+    elif a=='package_date':
+        return Package.query.filter_by(package_date=b).all()
+    else :
+        return False
+
 @app.route("/Modefy", methods=['GET','POST'])
 @login_required
 def Modefy():
     if request.method=='POST':
-        a=request.form.get('infosearch')
-        if a=='id':
-            data =Package.query.filter_by(id=request.form.get('search')).all()
-        elif a=='worker_id':
-            data =Package.query.filter_by(worker_id=request.form.get('search')).all()
-        elif a=='sender_full_name':
-            data =Package.query.filter_by(sender_full_name=request.form.get('search')).all()
-        elif a=='sender_adress':
-            data =Package.query.filter_by(sender_adress=request.form.get('search')).all()
-        elif a=='sender_cin':
-            data =Package.query.filter_by(sender_cin=request.form.get('search')).all()
-        elif a=='sender_phonenumber':
-            data =Package.query.filter_by(sender_phonenumber=request.form.get('search')).all()
-        elif a=='resever_full_name':
-            data =Package.query.filter_by(resever_full_name=request.form.get('search')).all()
-        elif a=='resever_adress':
-            data =Package.query.filter_by(resever_adress=request.form.get('search')).all()
-        elif a=='resever_cin':
-            data =Package.query.filter_by(resever_cin=request.form.get('search')).all()
-        elif a=='resever_phonenumber':
-            data =Package.query.filter_by(resever_phonenumber=request.form.get('search')).all()
-        elif a=='package_date':
-            data =Package.query.filter_by(package_date=request.form.get('search')).all()
-        for i in range(len(data)):
-            data[i].worker_id=Worker.query.filter_by(id=data[i].worker_id).first().username
-        if data:
-            return render_template('search.html',data=data)
-        flash("package not found",'inv1')
-        return redirect(url_for('Modefy'))
+        if(request.form.get('infosearch')):
+            data = searchbase(request.form.get('infosearch'),request.form.get('search'))
+            print(data)
+            if data:
+                for i in range(len(data)):
+                    data[i].worker_id=Worker.query.filter_by(id=data[i].worker_id).first().username
+                return render_template('search.html',data=data)
+            flash("package not found",'inv1')
+            return redirect(url_for('Modefy'))
+        print('i have been here')
+        if(request.form.get('modi')):
+            olddata = searchbase('id',request.form.get('modi'))
+            print('here!!!!!!!!!!!!!!!!!!',request.form.get('modi'),olddata)
+            olddata[0].sender_phonenumber=olddata[0].sender_phonenumber[4:]
+            olddata[0].resever_phonenumber=olddata[0].resever_phonenumber[4:]
+            session['old_id']=olddata[0].id
+            db.session.delete(olddata[0])
+            db.session.commit()
+            return render_template('modify_package.html',data=olddata[0],user=session['data'])
     return render_template('search.html',data=False)
 @app.route("/logout")
 def logout():
     flash("You have been loged out secssefuly",'info')
     logout_user()
+    return redirect(url_for('index'))
+@app.route("/relogin")
+def relogin():
+    flash('Your session has been timed out please re-login','info')
     return redirect(url_for('index'))

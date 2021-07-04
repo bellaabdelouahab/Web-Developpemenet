@@ -14,6 +14,7 @@
             <th>resever cin</th>
             <th>resever address</th>
             <th>resever phone number</th>
+            <th>weight</th>
             <th>Date</th>
         </tr>
     {% for datas in data %}
@@ -28,7 +29,12 @@
             <td>{{datas.resever_cin}}</td>
             <td>{{datas.resever_adress}}</td>
             <td>{{datas.resever_phonenumber}}</td>
-            <td id='current_date' class={{datas.id}} onclick='Modefy(this)'>{{datas.package_date}}</td>
+            <td>{{datas.weight}} Kg</td>
+            <td id='current_date' class={{datas.id}} onclick='Modefy(this)'>{{datas.package_date}}
+                <form action='/Modefy' method='POST' id={{datas.id}} style='display:none'>
+                    <input type="text" id='{{datas.id}}h' name="modi">
+                </form>
+            </td>
         </tr>
     {% endfor %}
     </table>
@@ -48,10 +54,10 @@
 {% endif %}
 {% endwith %}
 <div class=window>
-<form action='/Modefy' method='POST' id='formi'>
+<form action='/Modefy' style='display:flex' method='POST' id='formi'>
     <input type="text" name='search' placeholder='search'>
-    <label for="infosearch">Search By </label>
-        <select class="custom-select" name='infosearch' data-style="btn-primary">
+    <label for="infosearch" style='margin-top:1.5vw'>Search By </label>
+        <select class="custom-select" name='infosearch' data-style="btn-primary"style='height:3vw;margin-top:0.8vw;'>
             <option value='sender_full_name'>Sender Name</option>
             <option value='sender_cin'>Sender Cin</option>
             <option value='sender_adress'>Sender Address</option>

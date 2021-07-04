@@ -13,8 +13,7 @@ for(let i=0 ; i< b.length; i++){
 }
 function Modefy(e){
     if(e.style.cursor!='not-allowed'){
-        document.getElementById("neww").style.display='block'
-        console.log(e.className)
-        document.getElementById("modi").value=e.className
+        document.getElementById(e.className+'h').value=e.className
+        document.getElementById(e.className).submit()
     }
 }

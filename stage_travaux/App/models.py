@@ -32,5 +32,5 @@ class Package(db.Model):
     recept=db.Column(db.Boolean, default=False, nullable=False)
     type=db.Column(db.String(100), nullable= False)
     bank=db.Column(db.String(100))
-    checknumber=db.Column(db.String(100)) 
+    checknumber=db.Column(db.String(100))
     package_date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

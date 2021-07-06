@@ -3,19 +3,17 @@ from App.models import Worker , Package
 from App import app,db,bcrypt
 from flask_login import login_user, current_user, logout_user, login_required
 from datetime import timedelta
-
-
+from App.functions import searchbase
 @app.before_request
 def make_session_permanent():
     session.permanent = True
     app.permanent_session_lifetime = timedelta(minutes=10)
-
 @app.route('/', methods=['GET','POST'])
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('acc'))
-    #db.session.add(Worker(username='bella',email='abdobella977@gmail.com',password=bcrypt.generate_password_hash('bella462').decode('utf-8')))
-    #db.session.commit()
+    db.session.add(Worker(username='bella',email='abdobella977@gmail.com',password=bcrypt.generate_password_hash('bella462').decode('utf-8')))
+    db.session.commit()
     print(Worker.query.all())
     if request.method=='POST':
         print(db.session.query(Worker))
@@ -43,15 +41,15 @@ def create():
     id=len(Package.query.all())
     if request.method=='POST':
         post=Package(
-                    id=session['old_id'] if session['old_id'] else 'LD'+str(id).zfill(8)+'MA',\
+                    id=session.get('old_id') if session.get('old_id') else 'LD'+str(id).zfill(8)+'MA',\
                     sender_full_name=request.form.get('sender_full_name'),\
-                    resever_full_name=request.form.get('resever_full_name'),\
+                    Receiver_full_name=request.form.get('Receiver_full_name'),\
                     sender_cin=request.form.get('sender_cin'),\
                     sender_adress=request.form.get('sender_adress'),\
-                    resever_cin=request.form.get('resever_cin'),\
-                    resever_adress=request.form.get('resever_adress'),\
+                    Receiver_cin=request.form.get('Receiver_cin'),\
+                    Receiver_adress=request.form.get('Receiver_adress'),\
                     sender_phonenumber='+212'+request.form.get('sender_phonenumber'),\
-                    resever_phonenumber='+212'+request.form.get('resever_phonenumber'),\
+                    Receiver_phonenumber='+212'+request.form.get('Receiver_phonenumber'),\
                     weight=request.form.get('weight'),\
                     type=request.form.get('type'),\
                     sms=request.form.get('ams'),\
@@ -64,32 +62,6 @@ def create():
         flash("Order has been created secssefuly",'success')
         return redirect(url_for('acc'))
     return render_template("create.html", user=session['data'])
-def searchbase(a,b):
-    if a=='id':
-        return Package.query.filter_by(id=b).all()
-    elif a=='worker_id':
-        return Package.query.filter_by(worker_id=b).all()
-    elif a=='sender_full_name':
-        return Package.query.filter_by(sender_full_name=b).all()
-    elif a=='sender_adress':
-        return Package.query.filter_by(sender_adress=b).all()
-    elif a=='sender_cin':
-        return Package.query.filter_by(sender_cin=b).all()
-    elif a=='sender_phonenumber':
-        return Package.query.filter_by(sender_phonenumber=b).all()
-    elif a=='resever_full_name':
-        return Package.query.filter_by(resever_full_name=b).all()
-    elif a=='resever_adress':
-        return Package.query.filter_by(resever_adress=b).all()
-    elif a=='resever_cin':
-        return Package.query.filter_by(resever_cin=b).all()
-    elif a=='resever_phonenumber':
-        return Package.query.filter_by(resever_phonenumber=b).all()
-    elif a=='package_date':
-        return Package.query.filter_by(package_date=b).all()
-    else :
-        return False
-
 @app.route("/Modefy", methods=['GET','POST'])
 @login_required
 def Modefy():
@@ -106,9 +78,8 @@ def Modefy():
         print('i have been here')
         if(request.form.get('modi')):
             olddata = searchbase('id',request.form.get('modi'))
-            print('here!!!!!!!!!!!!!!!!!!',request.form.get('modi'),olddata)
             olddata[0].sender_phonenumber=olddata[0].sender_phonenumber[4:]
-            olddata[0].resever_phonenumber=olddata[0].resever_phonenumber[4:]
+            olddata[0].Receiver_phonenumber=olddata[0].Receiver_phonenumber[4:]
             session['old_id']=olddata[0].id
             db.session.delete(olddata[0])
             db.session.commit()

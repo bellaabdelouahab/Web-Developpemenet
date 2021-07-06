@@ -1,0 +1,116 @@
+*{
+    margin:0;
+    padding:0;
+}
+img{
+    width:90%;
+    height:90%;
+    position: absolute;
+    margin-left: -2.3vw;
+}
+#I1a,#I1b,#I1c,#I1d,#I1e,#I1f,#I1g,#I1h,
+#I2a,#I2b,#I2c,#I2d,#I2e,#I2f,#I2g,#I2h,
+#I3a,#I3b,#I3c,#I3d,#I3e,#I3f,#I3g,#I3h,
+#I4a,#I4b,#I4c,#I4d,#I4e,#I4f,#I4g,#I4h,
+#I5a,#I5b,#I5c,#I5d,#I5e,#I5f,#I5g,#I5h,
+#I6a,#I6b,#I6c,#I6d,#I6e,#I6f,#I6g,#I6h,
+#I7a,#I7b,#I7c,#I7d,#I7e,#I7f,#I7g,#I7h,
+#I8a,#I8b,#I8c,#I8d,#I8e,#I8f,#I8g,#I8h
+{
+    width:12.5%;
+    height:12.5%;
+    display: inline-block;
+    margin:0px;
+    position: relative;
+}
+#I1a,#I1c,#I1e,#I1g,
+#I2b,#I2d,#I2f,#I2h,
+#I3a,#I3c,#I3e,#I3g,
+#I4b,#I4d,#I4f,#I4h,
+#I5a,#I5c,#I5e,#I5g,
+#I6b,#I6d,#I6f,#I6h,
+#I7a,#I7c,#I7e,#I7g,
+#I8b,#I8d,#I8f,#I8h
+{
+    background-image: url('index1.jpeg');
+}
+#I1b,#I1d,#I1f,#I1h,
+#I2a,#I2c,#I2e,#I2g,
+#I3b,#I3d,#I3f,#I3h,
+#I4a,#I4c,#I4e,#I4g,
+#I5b,#I5d,#I5f,#I5h,
+#I6a,#I6c,#I6e,#I6g,
+#I7b,#I7d,#I7f,#I7h,
+#I8a,#I8c,#I8e,#I8g{
+    background:url('index3.jpeg');
+}
+#container{
+    margin: auto;
+    width:40vw;
+    height:40vw;
+    border: 2px solid black;
+    text-align: center;
+    font-size:0;
+}
+.Draw_valide_move > div{
+    position:absolute;
+    width:30%;
+    height: 30%;
+    background-color: rgba(36, 244, 43, 0.709);
+    border-radius: 5vw;
+    z-index: 100;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    animation:move 0.2s;
+    -webkit-animation:move 0.2s infinite;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-fill-mode:forwards;
+}
+div >div >div{
+    position: absolute;
+    width:90%;
+    height: 90%;
+}
+.selecte{
+
+}
+@-webkit-keyframes move /* Safari and Chrome */
+
+{
+0%   {opacity:0;}
+15%   {opacity:0.3;}  
+50%  {opacity:0.5;}
+75%  {opacity:0.7;}
+100% {opacity:1;}
+}
+.rotate{
+    animation:move1 0.4s;
+    -webkit-animation:move1 0.4s infinite;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-fill-mode:forwards;
+}
+@-webkit-keyframes move1 /* Safari and Chrome */
+
+{
+0%   {transform:rotate(0deg);}
+25%   {transform:rotate(45deg);}  
+50%  {transform:rotate(90deg);}
+75%  {transform:rotate(135deg);}
+100% {transform:rotate(180deg);}
+}
+.rerotate{
+    animation:move2 0.4s;
+    -webkit-animation:move2 0.4s infinite;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-fill-mode:forwards;
+}
+@-webkit-keyframes move2 /* Safari and Chrome */
+
+{
+0%   {transform:rotate(180deg);}
+25%   {transform:rotate(135deg);}  
+50%  {transform:rotate(90deg);}
+75%  {transform:rotate(45deg);}
+100% {transform:rotate(0deg);}
+}

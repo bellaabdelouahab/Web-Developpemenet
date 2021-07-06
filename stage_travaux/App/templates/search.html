@@ -10,10 +10,10 @@
             <th>sender cin</th>
             <th>sender address</th>
             <th>sender phone number</th>
-            <th>resever name</th>
-            <th>resever cin</th>
-            <th>resever address</th>
-            <th>resever phone number</th>
+            <th>Receiver name</th>
+            <th>Receiver cin</th>
+            <th>Receiver address</th>
+            <th>Receiver phone number</th>
             <th>weight</th>
             <th>Date</th>
         </tr>
@@ -25,10 +25,10 @@
             <td>{{datas.sender_cin}}</td>
             <td>{{datas.sender_adress}}</td>
             <td>{{datas.sender_phonenumber}}</td>
-            <td>{{datas.resever_full_name}}</td>
-            <td>{{datas.resever_cin}}</td>
-            <td>{{datas.resever_adress}}</td>
-            <td>{{datas.resever_phonenumber}}</td>
+            <td>{{datas.Receiver_full_name}}</td>
+            <td>{{datas.Receiver_cin}}</td>
+            <td>{{datas.Receiver_adress}}</td>
+            <td>{{datas.Receiver_phonenumber}}</td>
             <td>{{datas.weight}} Kg</td>
             <td id='current_date' class={{datas.id}} onclick='Modefy(this)'>{{datas.package_date}}
                 <form action='/Modefy' method='POST' id={{datas.id}} style='display:none'>
@@ -62,10 +62,10 @@
             <option value='sender_cin'>Sender Cin</option>
             <option value='sender_adress'>Sender Address</option>
             <option value='sender_phonenumber'>Sender Phone</option>
-            <option value='resever_full_name'>Resever Name</option>
-            <option value='resever_cin'>Resever Cin</option>
-            <option value='resever_adress'>Resever Address</option>
-            <option value='resever_phonenumber'>Resever Phone</option>
+            <option value='Receiver_full_name'>Receiver Name</option>
+            <option value='Receiver_cin'>Receiver Cin</option>
+            <option value='Receiver_adress'>Receiver Address</option>
+            <option value='Receiver_phonenumber'>Receiver Phone</option>
             <option value='worker_id'>Employ ID</option>
             <option value='id'>Package ID</option>
             <option value='package_date'>Date</option>

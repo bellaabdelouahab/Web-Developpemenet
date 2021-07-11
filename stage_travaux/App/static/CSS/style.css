@@ -53,3 +53,8 @@ input[type=checkbox] {
     border-radius: 10px ;
     height:40px;
 }
+
+#btnc:hover{
+    background: rgb(13, 191, 144);
+    cursor: pointer;
+}

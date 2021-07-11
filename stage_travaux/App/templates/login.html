@@ -2,35 +2,47 @@
 {% block content %}
 
 <main >
-    <link rel="stylesheet" href="{{url_for('static' , filename='CSS/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{url_for('static' , filename='CSS/loginform.css')}}">
 <div class='window'>
-    <form action="/" method="POST" id ='homey'>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="{{ category }}" style='margin-left:0.7vw ;'>
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% else %}
-                <br>
-            {% endif %}
-        {% endwith %}
-        <input type="text" id='email' name="username" placeholder='Username ...' required >
-        {% with messages = get_flashed_messages(category_filter=["inv2"]) %}
-            {% if messages %}
-                {% for msg in messages %}
-                    <div class="{{ category }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% else %}
-                <br><br>
-            {% endif %}
-        {% endwith %}
-        <input type="password" style='font-family: unset;' id='password' name='password' placeholder='password ...', required ><br>
-        <input type="checkbox" onclick="show_password()" ><span style='font-size:15px;'  > Show Password</span><br>
-        <input type="submit" id='submit' style='margin-left:45%;' value="log In">
+        <div class="login-wrapper">
+        <form action="/" method="POST">
+            <h1><span>SuperApp</span> Login.</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{{ category }}" style='margin-left:0vw ;'>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <br>
+                {% endif %}
+            {% endwith %}
+            <div class="input-row">
+                <span class="icon"><i class="fa fa-at"></i></span>
+                <input type="text" name="username" placeholder='Username ...' required />
+            </div>
+            {% with messages = get_flashed_messages(category_filter=["inv2"]) %}
+                {% if messages %}
+                    {% for msg in messages %}
+                        <div class="{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <br><br>
+                {% endif %}
+            {% endwith %}
+            <div class="input-row">
+                <span class="icon"><i class="fa fa-lock"></i></span>
+                <input type="password" name='password' placeholder='password ...', required/>
+            </div>
+    
+            <div class="submit-row">
+                <input type="submit" value="Log in &raquo;"/>
+            </div>
     </form>
 </div>
 </main>

@@ -1,0 +1,98 @@
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500);
+body{
+    font: 62.5% Open Sans, Freesans, sans-serif;
+    background: #bfcdd7;
+}
+
+
+.login-wrapper{
+    margin:0px auto;
+    width:325px;
+}
+
+form h1{
+    color:#dedede;
+    font-size:2.8em;
+    font-weight: normal;
+    letter-spacing: -1px;
+    font-family: Roboto;
+}
+
+form h1 span{
+    font-weight: 500;
+    letter-spacing: -1px;
+    
+}
+
+form input{
+    border:none;
+    margin:0;
+}
+
+form .input-row{
+    margin:0;
+    overflow:hidden;
+}
+
+form .icon{
+    font-size:1.4em;
+    background:#FFFFFF;
+    padding:0.8em;
+    border-left:4px solid #04AA6D;
+    color:#9f9f9f;
+    float:left;
+}
+
+form input[type="text"],form input[type="password"] {
+    padding:0.8em 0.8em 0.8em 0;
+    font-size:1.4em;
+    color:#c2c2c2;
+    width:275px;
+}
+
+form input[type="password"]{
+  width: 278px;
+}
+
+form input[type="text"]:focus,form input[type="password"]:focus {
+    outline:0;
+}
+
+form input[type="submit"]{
+    float:right;
+    border:none;
+    background:#04AA6D;
+    color:#FFFFFF;
+    font-size:1.6em;
+    padding:0.7em 1.2em;
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -webkit-transition: opacity .5s ease-in-out;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+form input[type="submit"]:hover {
+    background:#028555;
+    opacity: 0.8;
+}
+
+form .reset{
+    margin-left:1em;
+    color:#FFFFFF;
+    font-size: 1.4em;
+}
+
+form .reset a{
+    color:#FFFFFF;
+}
+
+form .reset a:hover{
+    text-decoration: none;
+}
+

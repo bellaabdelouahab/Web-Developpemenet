@@ -12,8 +12,8 @@ def make_session_permanent():
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('acc'))
-    db.session.add(Worker(username='bella',email='abdobella977@gmail.com',password=bcrypt.generate_password_hash('bella462').decode('utf-8')))
-    db.session.commit()
+    #db.session.add(Worker(username='bella',email='abdobella977@gmail.com',password=bcrypt.generate_password_hash('bella462').decode('utf-8')))
+    #db.session.commit()
     print(Worker.query.all())
     if request.method=='POST':
         print(db.session.query(Worker))

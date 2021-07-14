@@ -5,18 +5,36 @@
     <script src="{{ url_for('static',filename='JS/jquery-3.6.0.js') }}"></script>
     <title>Poste Maroc</title>  
 </head>
-<body> 
+<body>
+  <header>
     <div class="header">
-        <a href="#default" class="logo">CompanyLogo</a>
-        <div class="header-right">
-          <a class="active" href="#home">Home</a>
-          <a href="#contact">Contact</a>
-          <a href="#about">About</a>
-        </div>
+      <a href="/" id="logo">
+        <img id='poste_img' src="{{url_for('static',filename='IMAGES/poste_maroc.webp')}}" alt="Post Maroc">
+      </a>
+      <div class="header-right">
+        {% if current_user.is_authenticated %}
+          <a id='/accule' class="active" href="/accule">Home</a>
+          <a id="/logout" href="/logout">Log out</a>
+        {% else %}
+          <a id='/' href="/">Log in</a>
+        {% endif %}
+        <a id='/Support' href="/Support">Support</a>
       </div>
-    </header>   
-        {% block content %}
-        {% endblock content %}  
+    </div>
+  </header>   
+  {% block content %}
+  {% endblock content %}  
 </body>
+<script>
+  const getRouteValueAt = (idx) => {
 
+  const routeTokens = location.pathname.replace(/^\/+/g,'').split('/')
+  //[questions,20302776,how-to-get-route-parameter-in-javascript]
+
+  return routeTokens.length > idx ? routeTokens[idx] : undefined
+  }
+  let route=getRouteValueAt(0)
+  document.getElementsByTagName('a').className=''
+  document.getElementById('/'+route).className='active'
+</script>
 </html>

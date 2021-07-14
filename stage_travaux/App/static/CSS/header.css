@@ -8,9 +8,7 @@ body {
     height: 100%;
     background: white;
 }
-header{
-    background-color: white;
-}
+
 .window {
     max-width: 90%;
     border-radius: 20px;
@@ -102,7 +100,6 @@ header{
 .header {
     overflow: hidden;
     background-color: #f1f1f1;
-    padding: 20px 10px;
   }
   
   /* Style the header links */
@@ -116,14 +113,6 @@ header{
     line-height: 25px;
     border-radius: 4px;
   }
-  
-  /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
-  .header a.logo {
-    font-size: 25px;
-    font-weight: bold;
-  }
-  
-  /* Change the background color on mouse-over */
   .header a:hover {
     background-color: #ddd;
     color: black;
@@ -151,3 +140,14 @@ header{
       float: none;
     }
   }
+  .header-right > a{
+    margin-top: 10%;
+  }
+#logo{
+  width: 10%;
+  height: 100%;
+}
+#poste_img{
+  width: 100%;
+  height: 80%;
+}

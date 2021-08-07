@@ -52,8 +52,8 @@ def create():
                     Receiver_phonenumber='+212'+request.form.get('Receiver_phonenumber'),\
                     weight=request.form.get('weight'),\
                     type=request.form.get('type'),\
-                    sms=request.form.get('ams'),\
-                    recept=request.form.get('recept'),\
+                    sms=True if request.form.get('ams')=='on'else False,\
+                    recept=True if request.form.get('recept')else False,\
                     bank=request.form.get('bank'),\
                     checknumber=request.form.get('checknumber'),\
                     author=current_user)

@@ -41,6 +41,7 @@ form .icon{
     font-size:1.4em;
     background:#FFFFFF;
     padding:0.8em;
+    height: 1.4em;
     border-left:4px solid #04AA6D;
     color:#9f9f9f;
     float:left;
@@ -68,6 +69,7 @@ form input[type="submit"]{
     color:#FFFFFF;
     font-size:1.6em;
     padding:0.7em 1.2em;
+    margin-top: 2vw;
     opacity: 1;
     transition: opacity .5s ease-in-out;
     -moz-transition: opacity .5s ease-in-out;

@@ -5,7 +5,7 @@ body {
     width: 100%;
 }
 .window {
-    max-width: 90%;
+    max-width: 40%;
     border-radius: 20px;
     margin: auto;
     box-sizing: border-box;
@@ -17,19 +17,17 @@ body {
     position: relative;
 }
 input[type=text]{
-    width:50%;
+    width:17vw;
     box-sizing: border-box;
     padding: 12px 5px;
     outline: none;
     border: none;
     color: rgb(19, 17, 17);
-    border-radius: 5px;
     margin: 10px;
     font-weight: bold;
     background-color: #00336631;
 }
 #mod1 input[type=text]{
-    width:150%;
     background-color:#003366
 }
 #formi input{
@@ -68,6 +66,11 @@ input[type=text]{
 .custom-select {
   position: relative;
   font-family: Arial;
+  margin-left: -0.8vw;
+  background: #00336631;
+  height:2.85vw;
+  margin-top:0.75vw;
+  border: 0px solid black;
 }
 
 .custom-select select {
@@ -101,7 +104,6 @@ input[type=text]{
   color: #ffffff;
   padding: 8px 16px;
   border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   user-select: none;
 }
@@ -182,4 +184,16 @@ img
   50%  {opacity:0.7;}
   75%  {opacity:0.3;}
   100% {opacity:0;}
+  }
+  #submitBtn{
+    position: relative;
+    height:2.85vw;
+    margin-top:0.75vw;
+    background-color: #04AA6D;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
   }

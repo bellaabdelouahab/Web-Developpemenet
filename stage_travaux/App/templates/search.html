@@ -56,22 +56,22 @@
 <div class=window>
 <form action='/Modefy' style='display:flex' method='POST' id='formi'>
     <input type="text" name='search' placeholder='search'>
-    <label for="infosearch" style='margin-top:1.5vw'>Search By </label>
-        <select class="custom-select" name='infosearch' data-style="btn-primary"style='height:3vw;margin-top:0.8vw;'>
-            <option value='sender_full_name'>Sender Name</option>
-            <option value='sender_cin'>Sender Cin</option>
-            <option value='sender_adress'>Sender Address</option>
-            <option value='sender_phonenumber'>Sender Phone</option>
-            <option value='Receiver_full_name'>Receiver Name</option>
-            <option value='Receiver_cin'>Receiver Cin</option>
-            <option value='Receiver_adress'>Receiver Address</option>
-            <option value='Receiver_phonenumber'>Receiver Phone</option>
-            <option value='worker_id'>Employ ID</option>
-            <option value='id'>Package ID</option>
-            <option value='package_date'>Date</option>
-        </select>
+    <select class="custom-select" name='infosearch' data-style="btn-primary">
+        <option value='sender_full_name'>Sender Name</option>
+        <option value='sender_cin'>Sender Cin</option>
+        <option value='sender_adress'>Sender Address</option>
+        <option value='sender_phonenumber'>Sender Phone</option>
+        <option value='Receiver_full_name'>Receiver Name</option>
+        <option value='Receiver_cin'>Receiver Cin</option>
+        <option value='Receiver_adress'>Receiver Address</option>
+        <option value='Receiver_phonenumber'>Receiver Phone</option>
+        <option value='worker_id'>Employ ID</option>
+        <option value='id'>Package ID</option>
+        <option value='package_date'>Date</option>
+    </select>
+    <input type="submit" id="submitBtn" value='Search'>
     {% endif %}
-  </form>
+</form>
 </div>
 <script src="{{ url_for('static',filename='JS/validmodef.js') }}"></script>
 {% endblock content %}

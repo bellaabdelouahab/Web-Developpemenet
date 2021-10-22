@@ -1,20 +1,18 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 let Cheque=1.0025 // espece paying tax 
-showTab(currentTab); // Display the current tab
+document.getElementsByClassName("tab")[currentTab].style.display = "block";;
+showTab(currentTab) // Display the current tab
 function showTab(n) {
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
-  if(x[n].id=='tab' && document.getElementById('rad3').checked){
-    var y = document.getElementsByClassName("tab");
-    // Hide the current tab:
-    y[currentTab].style.display = "none";
-    // Increase or decrease the current tab by 1:
-    currentTab = currentTab + 1;
-    fixStepIndicator(1)
-    // Otherwise, display the correct tab:
-    showTab(currentTab);
-    return true
+  
+  if(!document.getElementById('rad4').checked){
+    var y = document.getElementById("tabs");
+    // Hide the cheque tab:
+    y.style.display = "none";
+  }
+  else{
+    document.getElementById("tabs").style.display = "block";
   }
   //... and fix the Previous/Next buttons:
   if (n == 0) {
@@ -24,22 +22,22 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").style.display = "none";
-    document.getElementById("submitBtn").style.display = "inline";
+    document.getElementById("submitBtn").style.display = "inline-block";
     document.getElementById("submitBtn").disabled=false
     let a= new Date
     document.getElementById("s_c").innerHTML=document.getElementById("_s_c").value
     document.getElementById("s_f").innerHTML=document.getElementById("_s_f").value
     document.getElementById("s_a").innerHTML=document.getElementById("_s_a").value
-    document.getElementById("s_p").innerHTML=document.getElementById("_s_p").value
+    document.getElementById("s_p").innerHTML='+212'+document.getElementById("_s_p").value
     document.getElementById("r_c").innerHTML=document.getElementById("_r_c").value
     document.getElementById("r_f").innerHTML=document.getElementById("_r_f").value
     document.getElementById("r_a").innerHTML=document.getElementById("_r_a").value
-    document.getElementById("r_p").innerHTML=document.getElementById("_r_p").value
-    document.getElementById("daterec").innerHTML=a.getFullYear()+'/'+a.getMonth()+'/'+a.getDate()+'-'+a.getHours()+':'+a.getMinutes()
-    document.getElementById("id").innerHTML='id1151'
-    document.getElementById("Tax").innerHTML=document.getElementById("pricetva").innerHTML
-    document.getElementById("price1").innerHTML=document.getElementById("pricenor").innerHTML
-    document.getElementById("Ttc").innerHTML=document.getElementById("pricettc").innerHTML
+    document.getElementById("r_p").innerHTML='+212'+document.getElementById("_r_p").value
+    document.getElementById("daterec").innerHTML='<NOBR>'+a.getFullYear()+'/'+(a.getMonth()+1)+'/'+a.getDate()+'-'+a.getHours()+':'+a.getMinutes()+'</NOBR>'
+    document.getElementById("id").innerHTML='<NOBR>'+document.getElementById("weigth_info").value+'Kg </NOBR>'
+    document.getElementById("Tax").innerHTML='<NOBR>'+document.getElementById("pricetva").innerHTML+"</NOBR>"
+    document.getElementById("price1").innerHTML='<NOBR>'+document.getElementById("pricenor").innerHTML+"</NOBR>"
+    document.getElementById("Ttc").innerHTML='<NOBR>'+document.getElementById("pricettc").innerHTML+"</NOBR>"
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
     document.getElementById("submitBtn").style.display = "none";
@@ -51,32 +49,41 @@ function showTab(n) {
 
 function nextPrev(n) {
   // This function will figure out which tab to display
+
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
-  if (n == 1 && !validateForm()) return false;
+ if (n === 1 && !validateForm()) return false;
   // Hide the current tab:
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
+  console.log(currentTab)
   // Otherwise, display the correct tab:
+  x[currentTab].style.display = "block";
   showTab(currentTab);
 }
 
-function validateForm() {
+function validateForm(submit=false) {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
+  console.log(y)
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "") {
       // add an "invalid" class to the field:
-      y[i].className += " invalid";
+      y[i].className += "invalid";
       // and set the current valid status to false
       valid = false;
     }
-
+    if (submit){
+      if(document.getElementById('bank').value!=""&&document.getElementById('banknumbr').value!=""&&document.getElementById("tabs").style.display=='block' || !document.getElementById('rad4').checked){
+        document.getElementById('regForm').submit()
+      }
+    }
+    
   }
   if(document.querySelector('#_s_p').value.length>0&&!Is_a_phonenumber(document.querySelector('#_s_p'))){
     document.querySelector('#_s_p').className += " invalid";
@@ -134,7 +141,7 @@ function calc_weight(e){
   else if(20<=weight&&weight<25) {
     newvalue=user.p5
   }
-  else if(25<=weight&&weight<30){
+  else if(25<=weight){
     newvalue=user.p6
   }
   else{
@@ -186,7 +193,7 @@ function radio1(){
 }
 let rad1=document.getElementById("rad1").checked=true;
 function calcall(a){
-  document.getElementById("price").innerHTML=a
+  document.getElementById("price").innerHTML=(a).toFixed(2)
   document.getElementById("pricetva").innerHTML=(a*0.20).toFixed(2)+'DH'
   document.getElementById("pricettc").innerHTML=(a*1.20*Cheque).toFixed(2)+'DH'
 }

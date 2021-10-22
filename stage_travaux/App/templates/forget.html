@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+{% if change %}
+<div class="forget_title"></div>
+<div class="forget_body">
+    <div class="forget_img"><img src="{{url_for('static' , filename ='IMAGES/postmaroc.png')}}" alt="Repaire System" width="90%" height="100%"></div>
+    <div class="forget_input">
+        <form action="/changepassword" id='new_password_' method="POST">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{{ category }} popmessage" >
+                            {{ message }}<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <br>
+                {% endif %}
+            {% endwith %}
+            <input type="text" name="number" placeholder="Code Number" required> 
+            <input type="password" name="new_password" placeholder="new password" required>
+            <input type="password" name="con_password" placeholder="confirme password" required>
+            <input type="submit" value="Verifier" style="background: rgb(243, 188, 6);color:white;">
+        </form>
+    </div>
+</div>
+{% else %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{ category }} popmessage" style="position: fixed;right:0%;">
+                    {{ message }}<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                </div> 
+            {% endfor %}
+        {% else %}
+            <br>
+        {% endif %}
+    {% endwith %}
+    <div class="forget_title"></div>
+    <div class="forget_body">
+        <div class="forget_img"><img src="{{url_for('static' , filename ='IMAGES/postmaroc.png')}}" alt="Repaire System" width="90%" height="100%"></div>
+        <div class="forget_input">
+            <form action="/changepassword" method="POST">
+                <input type="text" name="test_email" placeholder="Your Email" required>
+                <input type="submit" style="margin-right: 50px;" value="Verifier">
+            </form>
+        </div>
+    </div>
+{% endif %}
+{% endblock content %}

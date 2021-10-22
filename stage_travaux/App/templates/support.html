@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{url_for('static' , filename ='CSS/admin.css')}}">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="{{ category }} popmessage" style="padding-top: 0%; position: fixed;">
+                        {{ message }}<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    </div>
+                {% endfor %}
+            {% else %}
+                <br>
+            {% endif %}
+        {% endwith %}
+<form action="/Support" id="support_" method="POST">
+    <h2 id="contact">Contact Your Administrateur</h2>
+    <input type="email" style='margin:15px 140px;' name="email_support" placeholder="Enter Your Email" required>
+    <input type="text" style='margin:15px 140px;' name='type' placeholder="Type Of Problem..." required>
+    <textarea name="problem_explain" cols="100" rows="10" required placeholder="Explaine the problem and suggest Actions to take"></textarea>
+    <input class="submit_support" id="khdemplz" type="submit" value="Send">
+</form>
+
+{% endblock content %}

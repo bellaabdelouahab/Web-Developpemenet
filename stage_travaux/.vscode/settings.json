@@ -1,0 +1,29 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "root",
+            "database": "${workspaceFolder:stage_travaux}/App/testDB"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "root",
+            "database": "${workspaceFolder:stage_travaux}/App/testDB"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "rout",
+            "database": "${workspaceFolder:stage_travaux}/App/testDB"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "rit",
+            "database": "${workspaceFolder:stage_travaux}/App/testDB"
+        }
+    ],
+    "git.ignoreLimitWarning": true
+}

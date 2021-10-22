@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="{{url_for('static' , filename='CSS/header.css')}}">
-    <script src="{{ url_for('static',filename='JS/jquery-3.6.0.js') }}"></script>
+    <link rel="stylesheet" href="{{url_for('static' , filename ='CSS/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static' , filename ='CSS/admin.css')}}">
     <title>Poste Maroc</title>  
 </head>
 <body>
   <header>
     <div class="header">
       <a href="/" id="logo">
-        <img id='poste_img' src="{{url_for('static',filename='IMAGES/poste_maroc.webp')}}" alt="Post Maroc">
+        <img src="{{url_for('static',filename='IMAGES/logo.png')}}" alt="Post Maroc">
       </a>
       <div class="header-right">
         {% if current_user.is_authenticated %}
-          <a id='/accule'  href="/accule">Home</a>
-          <a id='/create'  href="/create">Create</a>
-          <a id="/Modefy"  href="/Modefy">Modefy</a>
-          <a id="/logout"  href="/logout">Log out</a>
+          <a id='/accule' href="/Home">Home</a>
+          <a id="/logout" href="/logout">Log out</a>
         {% else %}
           <a id='/' href="/">Log in</a>
         {% endif %}
-        <a id='/Support'   href="/Support">Support</a>
+        <a id='/Support' href="/Support">Support</a>
       </div>
     </div>
-  </header>   
+  </header>
   {% block content %}
   {% endblock content %}  
+  <script src="{{ url_for('static',filename='JS/jquery-3.6.0.js') }}"></script>
 </body>
 <script>
   const getRouteValueAt = (idx) => {
 
   const routeTokens = location.pathname.replace(/^\/+/g,'').split('/')
   //[questions,20302776,how-to-get-route-parameter-in-javascript]
-
   return routeTokens.length > idx ? routeTokens[idx] : undefined
   }
   let route=getRouteValueAt(0)
+  console.log(route)
   document.getElementsByTagName('a').className=''
-  document.getElementById('/'+route).className='active'
+  if (document.getElementById('/'+route)){
+    document.getElementById('/'+route).className='active'
+  }
+  function show_password() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 </script>
 </html>

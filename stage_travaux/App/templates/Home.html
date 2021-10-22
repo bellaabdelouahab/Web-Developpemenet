@@ -1,0 +1,340 @@
+
+{% extends "base.html" %}
+{% block content %}
+    {% if not admin %}
+        <main >
+            <link rel="stylesheet" href="{{url_for('static' , filename ='CSS/multiform.css')}}">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="{{ category }} popmessage" style="position: fixed;right:0%;">
+                            {{ message }}<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <br>
+                {% endif %}
+            {% endwith %}
+            <div class="admin_page">
+                <div class="admin_page_chose">
+                    <div class="admin_chose_add"style="margin-right: 20%;">
+                        <h3>Want To Add A Package To The System ?</h3>
+                        <button id='awdi' class="add_button"  >ADD A PACKAGE</button>
+                    </div>
+                    <div class="admin_chose_change">
+                        <h3>Want To Modify A Package In The System ?</h3>
+                        <button class="change_button">MODIFY A PACKAGE</button>
+                    </div> 
+                    <div class="admin_chose_cont" style="width: 60%;border-radius: 25px;">
+                        <div class="admin_add">
+                            <form action="/Home" id="regForm" method="POST" id ='homey'>
+                                <div class="admin_add_title">
+                                    Create An Order
+                                </div>
+                                <!-- One "tab" for each step in the form: -->
+                                <div class="tab">Package informations : <br>
+                                    <input type='text' id="weigth_info"  placeholder="Package weight in Kg..." oninput="calc_weight(this)" name="weight" ><br>
+                                    <div style="text-align: left;display: inline-block;">
+                                        <input type="radio" id='rad1' onclick='radio1()' name="type" value="eco" checked>
+                                        <label for="rad1">Eco</label>
+                                        <input type="radio" id='rad2' onclick='radio1()' name="type" value="express">
+                                        <label for="rad2">Express</label><br><br>
+                                        <input type="checkbox" id='checkbox1' onclick='calc_type()' name="sms" value='True' >
+                                        <label for="checkbox1">SMS</label><br><br>
+                                        <input type="checkbox" id='checkbox2' onclick='calc_type1()' name="recept" >
+                                        <label for="checkbox2">acusse de reception</label><br><br>
+                                        <input type="radio" id='rad3' name='no' onclick='cheque()'  checked>
+                                        <label for="rad3">Espece</label> 
+                                        <input type="radio" id='rad4' onclick='cheque()'  name='no'>
+                                        <label for="rad4">Cheque</label><br>
+                                        <input type="text" id='PACKAGE_id' style='opacity: 0%;' name='old_id' value="0">
+                                    </div>
+                                    <div id='ttc'>
+                                        Prix(H.T): <span id='pricenor'> <span id='price'>0</span> DH </span><br><hr>
+                                        Tax (TVA): <span id='pricetva'>0 DH </span><br><hr>
+                                        TTC: <span id='pricettc'>0 DH </span>
+                                    </div>
+                                </div>
+                                <div class="tab">
+                                    <div id='infs'>Sender informations :
+                                        <input type='text' id='_s_f' placeholder="Full name..." oninput="this.className = ''" name="sender_full_name">
+                                        <input type='text' id='_s_c' placeholder="CIN..." oninput="this.className = ''" name="sender_cin">
+                                        <input type='text'  id='_s_a' placeholder="Adress..." oninput="this.className = ''" name="sender_adress">
+                                        <div class='nbrph'>
+                                            <div id='_212'>
+                                                +212
+                                            </div>
+                                            <input type='text' id='_s_p' placeholder="Phone number..." oninput="this.className = ''" name="sender_phonenumber">
+                                        </div>
+                                    </div>
+                                    <div id='infs'>Receiver informations :
+                                        <input type='text' id='_r_f' placeholder="Full name..." oninput="this.className = ''" name="Receiver_full_name">
+                                        <input type='text' id='_r_c' placeholder="CIN..." oninput="this.className = ''" name="Receiver_cin">
+                                        <input type='text' id='_r_a' placeholder="Adress..." oninput="this.className = ''" name="Receiver_adress">
+                                        <div class='nbrph'>
+                                            <div id='_212'>
+                                                +212
+                                            </div>
+                                            <input type='text' id='_r_p' placeholder="Phone number..." oninput="this.className = ''" name="Receiver_phonenumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="tab" id="tableinfo">More Info:
+                                    <table id="customers">
+                                        <tr>
+                                            <th style="background-color: rgb(255, 167, 36)" colspan="4"> <center>Sender</center></th>
+                                            <th style="background-color: rgb(255, 167, 36)" colspan="4"><center>Receiver</center></th>
+                                        </tr>
+                                        <tr>
+                                            <th> Cin</th>
+                                            <th>full name</th>
+                                            <th>Adress</th>
+                                            <th>Phone</th>
+                                            <th> Cin</th>
+                                            <th>full name</th>
+                                            <th>Adress</th>
+                                            <th>Phone</th>
+                                        </tr>
+                                        <tr>
+                                            <td id='s_c'></td>
+                                            <td id='s_f'></td>
+                                            <td id='s_a'></td>
+                                            <td id='s_p'></td>
+                                            <td id='r_c'></td>
+                                            <td id='r_f'></td>
+                                            <td id='r_a'></td>
+                                            <td id='r_p'></td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background-color: rgb(255, 167, 36)" colspan="4"><center>Other informations</center></th>
+                                            <th style="background-color: rgb(255, 167, 36)" colspan="4"><center>TTC</center></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>weight</th>
+                                            <th>Price</th>
+                                            <th>Tax</th>
+                                            <td colspan="4" rowspan="2" id='Ttc' ></td>
+                                        </tr>
+                                        <tr>
+                                            <td id='daterec' ></td>
+                                            <td id='id'></td>
+                                            <td id='price1'></td>
+                                            <td id='Tax'></td>
+                                            
+                                        </tr>
+                                    </table>
+                                    <div id='tabs'>
+                                        <NOBR>
+                                            <input type='text' id="bank" style="margin-left: 0px;" placeholder="Bank..." oninput="this.className = ''" name="bank">
+                                            <input type='text' id='banknumbr' style="margin-left: -20px;" placeholder="Check Number..." oninput="this.className = ''" name="checknumber">
+                                        </NOBR>
+                                    </div>
+                                </div>
+                                <div style="position:absolute;bottom: 0%;right: 0%;">
+                                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                    <button type="button" id="nextBtn" class="logo" onclick="nextPrev(1)">Next</button>
+                                    <button type='button' id="submitBtn" class="logo" onclick="validateForm(true)">Submit</button>
+                                </div>
+                                <!-- Circles which indicates the steps of the form: -->
+                                <div style="position:absolute;bottom: 0%;right: 46%;">
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="admin_change">
+                            <div class="admin_add_title">
+                                MODIFY A PACKAGE
+                            </div>
+                            <div class="admin_add_input">
+                                <div id="searchcont">
+                                    <input type="text" name='search' placeholder='search' id='searchpackage' >
+                                    <select class="_sele" name='infosearch' id="infos_" data-style="btn-primary" style="margin: 0%;margin-left: -1%;display: inline;">
+                                        <option value='2'>Sender Name</option>
+                                        <option value='3'>Sender Cin</option>
+                                        <option value='4'>Sender Address</option>
+                                        <option value='5'>Sender Phone</option>
+                                        <option value='6'>Receiver Name</option>
+                                        <option value='7'>Receiver Cin</option>
+                                        <option value='8'>Receiver Address</option>
+                                        <option value='9'>Receiver Phone</option>
+                                        <option value='0'>Employ ID</option>
+                                        <option value='1'>Package ID</option>
+                                        <option value='10'>Date</option>
+                                    </select>
+                                    <input type="submit" onclick="search()" id="submitBtn1" style="height: 100%;margin-left: -2px;border-radius: 0px 10px 10px 0px;padding: 2px 15px;" value="Search">
+                                </div>
+                                <div id="packagetable">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="admin_successs">
+                            <div class="admin_success_text">
+                                <h3>Are You Sure ?</h3>
+                                <form action="/Home" method="post" id='Delete_form'>
+                                    <input type="text" style="display: none;" id="delete" name='Delete_package'>
+                                    <input type="submit" class="deleteapackage" value="Yes">
+                                </form>
+                            </div>
+                            <div class="admin_success_pic">
+                                <img src="{{url_for('static' , filename ='IMAGES/success.png')}}">
+                                <button class="make_new">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var user = JSON.parse('{{ user | tojson | safe}}');
+                var Packages = JSON.parse('{{ Package | tojson | safe}}');
+            </script>
+            <script src="{{ url_for('static',filename='JS/multiform.js') }}"></script>
+            <script src="{{url_for('static' , filename ='JS/onepagecontentempl.js')}}"></script>
+        </main>
+    {% else %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="{{ category }} popmessage" style="position: fixed;right:0%;">
+                    {{ message }}<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="admin_page">
+            
+            <div class="admin_page_chose">
+                <div class="admin_chose_add">
+                    <h3>You Want To Create An Account ?</h3>
+                    <button class="add_button">Create Account</button>
+                </div>
+                <div class="admin_chose_del">
+                    <h3>You Want To Delete An Account ?</h3>
+                    <button class="del_button">Delete Account</button>
+                </div>
+                <div class="admin_chose_change">
+                    <h3>You Want To Change Price ?</h3>
+                    <button class="change_button">Change Price</button>
+                </div> 
+                <div class="admin_chose_cont">
+                    <div class="admin_add">
+                        <div class="admin_add_title">
+                            CREATE ACCOUNT
+                        </div>
+                        <div class="admin_add_input">
+                            <input type="text" id=username placeholder="Username" required>
+                            <input type="text" id=cin placeholder="Cin" required>
+                            <input type="email" id=email placeholder="Email Adrress" required>
+                            <input type="password" id=password placeholder="Password" required>
+                            <input type="password" id=cpassword placeholder="Confirme Password" required>
+                            <button id=add onclick="acc(this)">CREATE</button>
+                        </div>
+                    </div>
+                    <div class="admin_success">
+                        <div class="admin_success_text">
+                            <h3>YOUR ACCONT HASE BEEN CREATE SUCCESSFULY</h3>
+                            <h5>This Persnon Now Can Access To Your System Whit This Account</h5>
+                        </div>
+                        <div class="admin_success_pic">
+                            <img src="{{url_for('static' , filename ='IMAGES/success.png')}}">
+                            <button class="make_new">BACK</button>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="admin_del">
+                        <div class="admin_add_title">
+                            DEL ACCOUNT
+                        </div>
+                        <div class="admin_add_input">
+                            <input type="text" id='Cin' placeholder="Cin" required>
+                            <button id='del' onclick="acc(this)">Delete account</button>
+                        </div>
+                    </div>
+                    <div class="admin_success1">
+                        <div class="admin_success_text">
+                            <h3>THIS ACCONT HASE BEEN DETELED SUCCESSFULY</h3>
+                            <h5>This Persnon Now Can Not Access To Your System Whit This Account</h5>
+                        </div>
+                        <div class="admin_success_pic">
+                            <img src="{{url_for('static' , filename ='IMAGES/success.png')}}">
+                            <button class="make_new">BACK</button>
+                        </div>
+                    </div>
+
+                    <!--  -->
+                    <div class="admin_change">
+                        <div class="admin_add_title">
+                            CHANGE PRICE
+                        </div>
+                        <div class="admin_add_input">
+                            <div class="admin_change_chose">
+                                <div class="admin_change_Manage">
+                                    <button id="Manage">MANAGE<br>PRICE</button>
+                                    <button id="Add">ADD <br> PRICE</button>
+                                </div>
+                                <div class="admin_add_price">
+                                    <input type="text" id='p1' placeholder="Price 1" required>
+                                    <input type="text" id='p2' placeholder="Price 2" required>
+                                    <input type="text" id='p3' placeholder="Price 3" required>
+                                    <input type="text" id='p4' placeholder="Price 4" required>
+                                    <input type="text" id='p5' placeholder="Price 5" required>
+                                    <input type="text" id='p6' placeholder="Price 6" required>
+                                    <button id='addprc' onclick="acc(this)">Add new</button>
+                                </div>
+                                <div class="admin_manage_price">
+                                    <div class="admin_manage_title">
+                                        <p>PR 1</p>
+                                        <p>PR 2</p>
+                                        <p>PR 3</p>
+                                        <p>PR 4</p>
+                                        <p>PR 5</p>
+                                        <p>PR 6</p>
+                                        <p>MG</p>
+                                    </div>
+                                    {% if prices %}
+                                    <div id='scrolprice'>
+                                        {% for price in prices %}
+                                            <div class="admin_manage_show">
+                                                <p>{{price.price1}} DH</p>
+                                                <p>{{price.price2}} DH</p>
+                                                <p>{{price.price3}} DH</p>
+                                                <p>{{price.price4}} DH</p>
+                                                <p>{{price.price5}} DH</p>
+                                                <p>{{price.price6}} DH</p>   
+                                                <div class="button">
+                                                    {% if price.active==false %}
+                                                        <button class='{{price.id}}' id='activate' onclick="acc(this)" >Activate</button>
+                                                    {% else %}
+                                                        <button id='activate'>activated</button>
+                                                    {% endif %}                   
+                                                    <button class='{{price.id}}' id='del_' onclick="acc(this)" >Delete</button>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                        
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admin_success2">
+                        <div class="admin_success_text">
+                            <h3>THE PRICE HAS BEEN ADDED AND ACTIVATED</h3>
+                            <h5></h5>
+                        </div>
+                        <div class="admin_success_pic">
+                            <img src="{{url_for('static' , filename ='IMAGES/success.png')}}">
+                            <button class="make_new">BACK</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <script src="{{url_for('static' , filename ='JS/onepagecontent.js')}}"></script>
+    {% endif %}
+{% endblock content %}

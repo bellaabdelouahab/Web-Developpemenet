@@ -1,59 +1,306 @@
-h2 {
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+header{
+
+    background-color: rgb(230, 140, 22);
+    height: 15vh;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+}
+#logo{
+    width: 80vw;
+    margin-top: 0%;
+}
+.header img{
+    display: inline-block;
+    height: 14.2vh;
+}
+.header-right{
+    border: 1px solid black;
+    width: 50vw;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}
+.header-right a{
+    width: 17vw;
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    text-decoration: none;
+    transition: all 0.3s linear;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header-right a:hover{
+    background-color: rgb(255, 167, 36);
+    transition: all 0.3s linear;
+}
+.header a.active {
+    background-color: rgb(255, 167, 36);
+    color: white;
+  }
+.login-wrapper h1{
+    border: 1px solid black;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    background-color: rgb(255, 167, 36);
+    color: white;
+}
+.login_input{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+}
+
+.login_input_in{
+    width: 40%;
+    height: 80%;
+    border: none;
+    display: grid;
+    place-items: center;
+}
+.login_input_pic{
+    width: 40%;
+    height: 80%;
+}
+@media screen and (max-width:800px){
+    .login_input_in{
+        width: 70%;
+        height: 70%;
+    }
+    .login_input_pic{
+        width: 40%;
+        height: 40%;
+    }
+}
+.login_input_pic img{
+    height: 100%;
+    width: 100%;
+}
+.input-row{
+    width: 100%;
+}
+input[type = text] , input[type = password],input[type = email]{
+    padding: 2.2% 14% 2.2% 14%;
+    text-align: center;
+    margin: 2%;
+}
+input[type = submit]{
+    padding: 1.2% 12% 1.2% 12%;
+    display: block;
+    margin: 3%;
+    background-color: rgb(230, 140, 22);
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 4px;
+}
+input[type = submit]:hover{
+    background-color: rgb(225, 199, 2);
+    cursor: pointer;
+}
+.login_input a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.login_input a:hover{
+    text-decoration: underline;
+}
+.forget_title{
+    height: 12%;
+}
+.forget_body{
+    height: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.forget_img{
+    height: 80%;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+}
+.forget_input{
+    border: 1px solid black;
+    border-radius: 27px;
+    width: 45%;
+    height: 40%;
     text-align: center;
 }
-
-input[type=text],
-input[type=password] {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 5px;
-    outline: none;
-    border: none;
-    color: rgb(19, 17, 17);
-    border-radius: 5px;
-    margin: 10px;
-    font-weight: bold;
-    background-color: #00336631;
-    display: inline-block;
+.popmessage{
+    padding: 2px 2px 7px 7px;
+    display: inline;
+    border-radius: 4px;
+    animation:move 5s;
+    -webkit-animation:move 5s infinite;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-fill-mode:forwards;
 }
-form{
-    width: 100%;
+@-webkit-keyframes move 
+{
+0%   {opacity:1;}
+15%   {opacity:0.7;}  
+50%  {opacity:0.5;}
+75%  {opacity:0.3;}
+100% {opacity:0;}
 }
-input[type=submit] {
-    background-color: #04AA6D;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 17px;
-    font-family: Raleway;
+.closebtn:hover{
+    color: rgb(238, 52, 52);
     cursor: pointer;
 }
-
-input[type=submit]:hover {
-    background: #60adde;
-    opacity: 0.7;
-    color: #fff;
+.closebtn{
+    margin-left: 110px;
+    font-size: 30px;
+}
+.success{
+    color: green;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(111, 232, 100);
+}
+.info{
+    color: rgb(0, 110, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(138, 195, 214);
+}
+.warning{
+    color: rgb(174, 174, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(209, 204, 34);
+}
+.error{
+    color: rgb(237, 79, 79);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #d3d3d3;
+}
+#formi{
+    display: flex;
+    height: 10%;
+}
+._sele{
+    height: 100%;
+    width: 25%;
+    text-align: center;
+}
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    margin: auto;
 }
 
-input[type=submit]:hover :after {
-    width: 100%;
+#customers td, #customers th{
+    border: 1px solid #ddd;
+
+    height: 10px;
 }
-
-input[type=checkbox] {
-    margin-left: 0.8vw;
+#customers  tr  td {
+    background-color: #f2f2f2;
+    padding: 0.1%;
+    height: 10px;
 }
-
-
-#btnc{
+#customers tr:hover {
+    background-color: #ddd;
+}
+#customers th ,#table_content td{
+    padding: 6px 3px;
+    text-align: left;
+    font-size: 10px;
+    background-color: #04aa6d;
+    color: white;
+}
+#scrolprice{
+    height: 240px;
+    overflow: scroll;
+}
+#support_{
+    text-align: center;
+}
+#contact,#inner_contact{
+    margin-top: 0%;
+    text-align: center;
+    color: darkblue;
     display: block;
-    background-color: rgb(106, 187, 187);
-    width: 100%;
-    border:1px solid rgb(106, 187, 187);
-    border-radius: 10px ;
-    height:40px;
+}
+.packagetable.active{
+    overflow: scroll;
+    overflow-y: auto;
+}
+#table_content {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    
 }
 
-#btnc:hover{
-    background: rgb(13, 191, 144);
+#table_content td, #table_content th{
+    border: 1px solid #ddd;
+    font-size: 15px;
+    text-align: center;
+}
+#table_content  tr  td {
+    background-color: #f2f2f2;
+    height: 10px;
+    color: black;
+}
+#table_content tr:hover {
+    background-color: #ddd;
+}
+#table_content th {
+    padding: 6px 3px;
+    text-align: left;
+    font-size: 10px;
+    background-color: #04AA6D;
+    color: white;
+}
+#new_password_ *{
+    all: initial;
+    border: 1px solid black;
+    border-radius: 3px;
+    display: block;
+    margin: auto;
+    margin-top: 3px;
+    width: 50%;
+    height: 38px;
+    text-align: center;
+}
+input[type=checkbox],input[type=radio]{
+    width: 15px; height: 15px;
+    border-radius: 30%;
+    transition: box-shadow .3s;
+    background: lightgrey;
     cursor: pointer;
+    border: 0;
+    appearance: none; -webkit-appearance: none; 
+   }
+   input[type=checkbox]:checked,input[type=radio]:checked{
+    box-shadow: inset 0 0 0 20px rgb(92, 92, 225); 
+}
+.noselect {
+    user-select: none;
 }

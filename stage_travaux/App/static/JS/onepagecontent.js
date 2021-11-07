@@ -81,20 +81,39 @@ test.onclick = function(e){
 }
 
 function acc(x) {
-    
-    var username=document.getElementById('username')
-    var cin=document.getElementById('cin')
-    var Cin=document.getElementById('Cin')
-    var email=document.getElementById('email')
-    var password=document.getElementById('password')
-    var cpassword=document.getElementById('cpassword')
-    if (password.value != cpassword.value){
-        cpassword.classList.add('error')
-        cpassword.value = null
-        password.value = null
-        return 0
-    }
     if (x.id=='add'){
+        var username=document.getElementById('username')
+        var cin=document.getElementById('cin')
+        var email=document.getElementById('email')
+        var password=document.getElementById('password')
+        var cpassword=document.getElementById('cpassword')
+        console.log(cin.value)
+        var pass=true
+        if(username.value==""){
+            username.classList.add("invalid")
+            pass=false
+        }
+        if(cin.value==""){
+            cin.classList.add("invalid")
+            pass=false
+        }
+        if(email.value==""){
+            email.classList.add("invalid")
+            pass=false 
+        } 
+        if(password.value==""){
+            password.classList.add("invalid")
+            pass=false
+        }
+        if (password.value != cpassword.value){
+            cpassword.classList.add('invalid')
+            cpassword.value = null
+            password.value = null
+            pass=false
+        }
+        if (!pass){
+            return 0;
+        }
         var user_score = {
             'changeingtype':'add',
             'username': username.value,
@@ -104,12 +123,12 @@ function acc(x) {
         }
     }
     else if(x.id=='del'){
-
+        var Cin=document.getElementById('Cin')
         var user_score = {
             'changeingtype':'del',
             'cin':Cin.value
         }
-    }
+    } 
     else if(x.id=='addprc'){
         var p1=document.getElementById('p1')
         var p2=document.getElementById('p2')

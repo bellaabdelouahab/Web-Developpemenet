@@ -427,3 +427,6 @@
     border: none;
     border-radius: 4px;
 }
+input.invalid {
+    border:1px solid red;
+}

@@ -129,11 +129,12 @@ def logout():
 def changepassword():
     if request.method == 'POST':
         if request.form.get("test_email"):
-            test_data = Worker.query.filter_by(email = session['test_email']).first()
+            session["test_email"]=request.form.get("test_email")
+            test_data = Worker.query.filter_by(email = session["test_email"]).first()
             if test_data:
                 session['code_number'] = str(randint(100000,999999))
                 session['oldpassword']=test_data.password
-                responed=send_email(request.form.get("test_email"),session['code_number'])
+                responed=send_email(session["test_email"],session['code_number'])
                 if responed:
                     flash("Connection Filed",'error')
                     return redirect(url_for("changepassword"))
@@ -152,8 +153,8 @@ def changepassword():
             if new_password != request.form.get("con_password"):
                 flash("password and confirme password are not the same")
                 return redirect(url_for("changepassword"))
-            con_password = Worker.query.filter_by(email = session['test_email']).first()
-            con_password.password = bcrypt.generate_password_hash(new_password).decode('utf-8')
+            testn_data = Worker.query.filter_by(email = session["test_email"]).first()
+            testn_data.password = bcrypt.generate_password_hash(new_password).decode('utf-8')
             db.session.commit()
             flash('your password has been updated successfully', 'success')
             return render_template("login.html")

@@ -57,7 +57,6 @@ function nextPrev(n) {
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
-  console.log(currentTab)
   // Otherwise, display the correct tab:
   x[currentTab].style.display = "block";
   showTab(currentTab);
@@ -68,7 +67,6 @@ function validateForm(submit=false) {
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[currentTab].getElementsByTagName("input");
-  console.log(y)
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...

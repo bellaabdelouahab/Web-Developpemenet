@@ -87,7 +87,6 @@ function acc(x) {
         var email=document.getElementById('email')
         var password=document.getElementById('password')
         var cpassword=document.getElementById('cpassword')
-        console.log(cin.value)
         var pass=true
         if(username.value==""){
             username.classList.add("invalid")

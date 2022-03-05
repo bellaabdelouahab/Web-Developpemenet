@@ -43,9 +43,7 @@ function checkdate(){
     let b=document.querySelectorAll("#current_date")
     let c=document.querySelectorAll("#change__")
     let d=document.querySelectorAll("#change_")
-    console.log(c.length,d.length);
     for(var i=0 ; i< c.length; i++){
-        console.log(a.getHours()-parseInt(b[i].innerHTML.slice(17,19)),month==b[i].innerHTML.slice(8,11),a.getDate()==parseInt(b[i].innerHTML.slice(5,7)));
         if((a.getHours()-parseInt(b[i].innerHTML.slice(17,19))<12)&&(month==b[i].innerHTML.slice(8,11))&&(a.getDate()==parseInt(b[i].innerHTML.slice(5,7)))){
             c[i].style.backgroundColor='green'
             c[i].style.cursor='pointer'
@@ -58,12 +56,6 @@ function checkdate(){
     }
 }
 
-function modify(e){
-    console.log('done')
-    
-}
-
-//console.log(Packages)
 function search() {
     if(document.getElementById('table_content')){
         document.getElementById('packagetable').removeChild(document.getElementById('table_content'))
@@ -109,7 +101,6 @@ function search() {
                 for (var j = 2; j< m.length; j++) {
                     l.push(m[j].innerHTML)
                 }
-                console.log(l)
                 document.getElementById("weigth_info").value=l[10].toString()
                 //   Sender information
                 document.getElementById("_s_f").value=l[1].toString()
@@ -122,7 +113,7 @@ function search() {
                 document.getElementById("_r_a").value=l[7].toString()
                 document.getElementById("_r_p").value=l[8].toString()
                 document.getElementById('PACKAGE_id').value=l[0].toString()
-                
+                calc_weight(document.getElementById("weigth_info"))
             })
             button.style.padding='4px'
             button.style.margin='0px'
@@ -134,12 +125,9 @@ function search() {
             button1.setAttribute('class',('change'+i).toString())
             button1.addEventListener('click',(e)=>{
                 if (e.target.style.cursor=='not-allowed'){return false}
-                console.log(e.target.classList[0]);
                 var d=document.getElementById(e.target.classList[0])
                 var m=d.querySelectorAll("TD NOBR")
                 window.document.getElementById('delete').value=m[2].innerHTML
-                console.log(m[2].innerHTML);
-                console.log(document.getElementsByName('Delete_package'));
                 document.getElementById('admin_successs').style.display = "block";
             })
             button1.style.cursor='pointer'

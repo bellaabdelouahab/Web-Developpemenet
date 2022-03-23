@@ -205,4 +205,4 @@ def indexout(user_score):
             else:
                 return jsonify(False)
             db.session.commit()
-    return jsonify(True)
+    return jsonify(True) 

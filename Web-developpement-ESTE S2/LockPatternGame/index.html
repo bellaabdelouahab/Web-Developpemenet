@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Game</title>
+</head>
+<body>
+    <div class="root">
+        <canvas id="Canvas" height="500" width="500" color="red">
+        </canvas>
+        <canvas id="LCanvas" height="500" width="500" style="background:rgba(237, 178, 178, 0.2);position:absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+        </canvas>
+    </div>
+</body>
+<style>
+    canvas{
+        background: #000;
+        border-radius:20px
+    }
+    *{
+        margin:0px;
+        padding:0px;
+    }
+    .root{
+        display: grid;
+        place-items: center;
+        /* align-items: center; 
+        justify-content: center;  */
+        height:100vh;
+        background-color:rgb(80, 255, 208);
+    }
+    /* .parent{
+        
+    } */
+    .child{
+        display:inline-block;
+        margin: 50px;
+        background-color: red;
+        width: 55px;
+        height: 55px;
+        border-radius:55px;
+    }
+    /* #child4,#child8,#child12,#child16{
+        display
+    } */
+</style>
+<script>
+    const canvas = document.getElementById('Canvas');
+    const context = canvas.getContext('2d');
+    function drawCircle(ctx, x, y, radius, fill, stroke, strokeWidth) {
+        ctx.beginPath()
+        console.log( ctx);
+        ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
+        // ctx.clearRect(0,0,500,500);
+        // console.log(ctx);
+        if (fill) {
+            ctx.fillStyle = fill
+            ctx.fill()
+        }
+        if (stroke) {
+            ctx.lineWidth = strokeWidth
+            ctx.strokeStyle = stroke
+            ctx.stroke()
+        }
+    }
+    var pos = [70,180,310,430]
+    for(i=0;i<4;i++){
+        for(j=0;j<4;j++){
+            // console.log(i,j);
+            drawCircle(context,pos[i],pos[j],25,"red",false)
+        }
+    }
+    const Lcanvas = document.querySelector('LCanvas');
+    const Lctx = canvas.getContext('2d');
+    Lctx.fillStyle = 'green';
+    // Matrix transformation
+    // Lctx.translate(140, 50);
+    // Lctx.rotate(45*Math.PI / 180);
+    // Lctx.translate(-0, -30);
+    console.log("fsk");
+    Lctx.fillRect(45, 45, 150, 50);
+    // context.rotate(0)
+    
+    
+    
+</script>
+</html>

@@ -1,3 +1,3 @@
 <template>
-    <input type="password">
+    <input type="text">
 </template>

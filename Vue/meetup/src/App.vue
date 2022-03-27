@@ -9,7 +9,7 @@ import userinput from './components/userinput.vue'
 export default {
   name: 'App',
   components: {
-    userinput
+    userinput 
   }
 }
 </script>

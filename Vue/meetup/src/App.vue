@@ -1,5 +1,5 @@
 <template>
-  <H1>Hello World</H1>
+  <h1>Milionir</h1>
   <userinput></userinput>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style>
+<style> 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,6 +1,6 @@
  <template>
-    <div>
-        <button id="subbutton" @click="Start">Start</button>
+ <button id="subbutton" @click="Start" v-if="tags">Start</button>
+    <div v-if="Qstns.length>1">       
         <h1>{{Qstns[index].question}}</h1>
         <button v-for="(value,v_index) in Qstns[index].incorrect_answers" class="answer" v-bind:key="value" @click="checkanswer(index,v_index)">{{value}}</button>
     </div>
@@ -12,7 +12,8 @@ export default {
     data : ()=> ({
         Qstns: [{}],
         index: 0,
-        inputExpected: "input"
+        inputExpected: "input",
+        // taggs: tags
     }) ,
     methods : {
         Start() {
@@ -21,16 +22,17 @@ export default {
                 this.Qstns = data.results;
                 for (let i = 0; i < this.Qstns.length; i++) {
                     this.Qstns[i].incorrect_answers.push(this.Qstns[i].correct_answer);
+                    this.Qstns[i].incorrect_answers.sort(() => Math.random() - 0.5);
                 }
-                console.log(this.Qstns);
+                this.taggs=false;
                 });
             })
         },
-        Addtag(event){
-            this.tags.push(this.inputExpected);
-            this.inputdefult = this.inputExpected;
-            $("input").val(""); 
-        },
+        // Addtag(event){
+        //     this.tags.push(this.inputExpected);
+        //     this.inputdefult = this.inputExpected;
+        //     $("input").val(""); 
+        // },
         predict(event){
             this.inputExpected = event.target.value;
             // else if(event.keyCode == 9){ 
@@ -49,6 +51,11 @@ export default {
             }
         },
         reseter(e){
+            
+            this.Qstns.sort(() => Math.random() - 0.5);
+            for (let i = 0; i < this.Qstns.length; i++) {
+                this.Qstns[i].incorrect_answers.sort(() => Math.random() - 0.5);
+            }
             this.index = 0;
             e.classList.remove("incorrect","no-hover");
         },
@@ -64,7 +71,13 @@ export default {
             }
         },
         
-    }
+    },
+    props: {
+        tags: {
+            type: Boolean,
+            default:false
+        }
+    },
 }
 </script>
 

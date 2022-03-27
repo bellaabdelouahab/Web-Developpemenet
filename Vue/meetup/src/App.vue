@@ -1,6 +1,6 @@
 <template>
   <h1>Milionir</h1>
-  <userinput></userinput>
+  <userinput :tags="tagse"></userinput>
 </template>
 
 <script>
@@ -10,7 +10,11 @@ export default {
   name: 'App',
   components: {
     userinput 
-  }
+    
+  },
+  data: ()=>({
+    tagse:true,
+  })
 }
 </script>
 

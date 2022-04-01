@@ -3,12 +3,16 @@
 <head>
     <title>Game</title>
 </head>
-<body>
+<body onclick="getClickedItem(event)">
     <div class="root">
         <canvas id="Canvas" height="500" width="500" color="red">
         </canvas>
-        <canvas id="LCanvas" height="500" width="500" style="background:rgba(237, 178, 178, 0.2);position:absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
-        </canvas>
+        <!-- [70,180,310,430] -->
+        <svg id="isvg" height="500" width="500" style="position:absolute;top:50%;left: 50%;transform: translate(-50%, -50%);">
+            <line x1="70" y1="70" x2="180" y2="430" style="stroke:rgb(139, 241, 36);stroke-width:5;" />
+            <line x1="70" y1="180" x2="310" y2="430" style="stroke:rgb(248, 183, 19);stroke-width:5;" />
+            <line x1="310" y1="70" x2="180" y2="310" style="stroke:rgb(31, 151, 243);stroke-width:5;" />
+          </svg>
     </div>
 </body>
 <style>
@@ -23,8 +27,6 @@
     .root{
         display: grid;
         place-items: center;
-        /* align-items: center; 
-        justify-content: center;  */
         height:100vh;
         background-color:rgb(80, 255, 208);
     }
@@ -39,19 +41,17 @@
         height: 55px;
         border-radius:55px;
     }
-    /* #child4,#child8,#child12,#child16{
-        display
-    } */
 </style>
 <script>
     const canvas = document.getElementById('Canvas');
     const context = canvas.getContext('2d');
+    var bounds = canvas.getBoundingClientRect();
+    var Lines = document.getElementsByTagName("line");
+    var movingLine = false;
+    // Lines[0].addEventListener("mousemove", movelines(this));
     function drawCircle(ctx, x, y, radius, fill, stroke, strokeWidth) {
         ctx.beginPath()
-        console.log( ctx);
         ctx.arc(x, y, radius, 0, 2 * Math.PI, false)
-        // ctx.clearRect(0,0,500,500);
-        // console.log(ctx);
         if (fill) {
             ctx.fillStyle = fill
             ctx.fill()
@@ -65,22 +65,51 @@
     var pos = [70,180,310,430]
     for(i=0;i<4;i++){
         for(j=0;j<4;j++){
-            // console.log(i,j);
             drawCircle(context,pos[i],pos[j],25,"red",false)
         }
     }
-    const Lcanvas = document.querySelector('LCanvas');
-    const Lctx = canvas.getContext('2d');
-    Lctx.fillStyle = 'green';
-    // Matrix transformation
-    // Lctx.translate(140, 50);
-    // Lctx.rotate(45*Math.PI / 180);
-    // Lctx.translate(-0, -30);
-    console.log("fsk");
-    Lctx.fillRect(45, 45, 150, 50);
-    // context.rotate(0)
-    
-    
-    
+
+    function getClickedItem(event){
+        var x = event.clientX - bounds.x;
+        var y = event.clientY - bounds.y;
+        for(i=0;i<4;i++){
+            for(j=0;j<4;j++){
+                if(Math.sqrt(Math.pow(x-pos[i],2)+Math.pow(y-pos[j],2))<25){
+                    console.log("clicked");
+                    console.log(pos[i],pos[j]);
+                    console.log(document.getElementById("isvg").removeEventListener("mousemove", movelines));
+                    // check lines x
+                    for(_=0;_<3;_++){
+                        var x1 = Lines[_].getAttribute("x1");
+                        var y1 = Lines[_].getAttribute("y1");
+                        var x2 = Lines[_].getAttribute("x2");
+                        var y2 = Lines[_].getAttribute("y2");
+                        if(x1==pos[i] && y1==pos[j]){
+                            console.log("line",_,"clicked");
+                            movingLine = _;
+                            document.getElementById("isvg").addEventListener("mousemove", movelines)
+                            document.getElementById("isvg").addEventListener("click", fixlines)
+                        }
+                        else if (x2==pos[i] && y2==pos[j]){
+                            console.log("line",_,"clicked");
+                            movelines = _;
+                            document.getElementById("isvg").addEventListener("mousemove", movelines)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    function movelines(e){
+        x1=true
+        if (x1){
+        Lines[movingLine].setAttribute("x1",e.clientX- bounds.x);
+        Lines[movingLine].setAttribute("y1",e.clientY- bounds.y);
+        }
+        else{
+            Lines[movingLine].setAttribute("x2",e.clientX- bounds.x);
+            Lines[movingLine].setAttribute("y2",e.clientY- bounds.y);
+        }
+    }
 </script>
 </html>

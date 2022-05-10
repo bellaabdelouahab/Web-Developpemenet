@@ -32,9 +32,9 @@
       </v-list>
     </v-navigation-drawer>
     <main>
-      <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg">
+      <!-- <v-parallax src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"> -->
         <router-view></router-view>
-      </v-parallax>
+      <!-- </v-parallax> -->
     </main>
     <v-bottom-navigation height="25">
       <v-btn value="recent">
